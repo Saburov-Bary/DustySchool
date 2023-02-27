@@ -7,7 +7,8 @@
     <title>No Idea</title>
     <style>
         .statistic-wrapper {
-            width: 1170px;
+            min-width: 1170px;
+            max-width: 1500px;
             margin: 0 auto;
         }
 
@@ -27,6 +28,7 @@
         .advantages {
             display: flex;
             align-items: flex-start;
+            justify-content: space-between;
         }
 
         .advantage {
@@ -34,11 +36,6 @@
             width: 255px;
             display: inline-block;
             position: relative;
-            margin-left: 30px;
-        }
-
-        .advantage:first-child {
-            margin-left: 0;
         }
 
         .advantage::before {
