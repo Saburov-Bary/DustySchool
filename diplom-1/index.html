@@ -9,93 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <title>Deliver X - First course work</title>
-    <style>
-        .page {
-            background-color: #e5e5e5;
-            margin: 0;
-            padding: 0;
-            min-width: 1080px;
-        }
-
-        .header {
-            font-family: 'Roboto', Helvetica, sans-serif;
-            margin: 0;
-            height: 120px;
-            font-size: 16px;
-            line-height: 1.12;
-            color: #121212;
-            box-shadow: 0px 3px 12px rgba(18, 18, 18, 0.06);
-            padding: 32px 100px;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .header-right-column {
-            display: flex;
-        }
-
-        .logo {
-            width: 161px;
-            vertical-align: middle;
-        }
-
-        .menu {
-            list-style-type: none;
-            margin: 0;
-            vertical-align: middle;
-            display: flex;
-            align-items: center;
-        }
-
-        .menu-item {
-            margin: 0;
-            margin-left: 26px;
-        }
-
-        .menu-item:first-child {
-            margin: 0;
-        }
-
-        .menu-item:last-child {
-            margin-left: 44px;
-        }
-
-        .menu-item-link {
-            text-decoration: none;
-            margin: 0;
-            color: #121212;
-        }
-
-        .menu-item-link:hover {
-            color: #ff5634;
-        }
-        
-        .download-button {
-            border: 1px solid #ededed;
-            box-shadow: 0px 2px 6px rgba(16, 16, 16, 0.04);
-            margin-left: 32px;
-        }
-
-        .register-button {
-            color: #fff;
-            background-color: #ff5634;
-            border: 1px solid #ff5634;
-            margin-left: 18px;
-        }
-
-        .download-button,
-        .register-button {
-            padding: 19px 25px;
-            border-radius: 12px;
-        }
-
-        .download-button:hover,
-        .register-button:hover {
-            cursor: pointer;
-        }
-
-    </style>
 </head>
 <body class="page">
     <header class="header">
@@ -115,15 +28,48 @@
                     <a class="menu-item-link" href="#">Pages</a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-item-link" href="#">Cart(<span class="menu-cart">0</span>)</a> <!-- .menu-cart создан специально для удобства изменения значения -->
+                    <a class="menu-item-link" href="#">Cart (<span class="menu-cart">0</span>)</a> <!-- .menu-cart создан специально для удобства изменения значения -->
                 </li>
             </ul>
             <button class="download-button">Download app</button>
             <button class="register-button">Register</button>
         </div>
     </header>
-    <section>
-        
+    <section class="delivery-service">
+        <div class="service">
+            <div class="service-left-column">
+                <p class="thesis">Food Delivery Service</p>
+                <h1 class="service-heading-1">Delicious food at your fingertips</h1>
+                <p class="service-text">A ultricies eget condimentum sed faucibus enim maecenas variusd dolor sitegestas hendrerit et maecenas habitant mattis in facili</p>
+                <button class="register-button service-button">Register restaurant</button>
+                <button class="download-button service-button service-button-margin">Download app</button>
+                <div class="service-facts">
+                    <div class="service-fact">
+                        <h3 class="service-fact-heading-3">10M<span class="service-fact-plus">+</span></h3>
+                        <p class="service-fact-text">Happy customers</p>
+                    </div>
+                    <div class="service-fact">
+                        <h3 class="service-fact-heading-3">500k<span class="service-fact-plus">+</span></h3>
+                        <p class="service-fact-text">HRestaurants available</p>
+                    </div>
+                    <div class="service-fact">
+                        <h3 class="service-fact-heading-3">30M<span class="service-fact-plus">+</span></h3>
+                        <p class="service-fact-text">Successful deliveries</p>
+                    </div>
+                </div>
+            </div>
+            <img class="service-right-img" src="./pics/restaurant-1.png" alt="">
+            <img class="service-img-mobile" src="./pics/mobile-1.png" alt="">
+        </div>
+        <div>
+            <p class="service-trust">Trusted by 5,000+ restaurants around the world</p>
+            <div class="service-numbers">
+                <img class="service-numbers-img" src="./pics/rest-img-1.png" alt="">
+                <img class="service-numbers-img" src="./pics/rest-img-2.png" alt="">
+                <img class="service-numbers-img" src="./pics/rest-img-3.png" alt="">
+                <img class="service-numbers-img" src="./pics/rest-img-4.png" alt="">
+            </div>
+        </div>
     </section>
     <section>
         
