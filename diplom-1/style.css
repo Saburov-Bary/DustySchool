@@ -336,3 +336,39 @@
     right: 347px;
     top: 109px;
 }
+
+.burger {
+    background-color: #121212;
+    color: #fff;
+    margin: 200px -109px 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.burger-welcome {
+    width: 541px;
+    margin-left: 109px;
+}
+
+.burger-welcome-heading-2 {
+    font-size: 56px;
+    line-height: 1.18;
+    margin: 274px 0 0;
+}
+
+.burger-images {
+    width: 677px;
+    display: flex;
+    margin-right: 109px;
+}
+
+.burger-images-column {
+    display: flex;
+    flex-direction: column;
+    gap: 31px;
+}
+
+.burger-images-right-column {
+    margin-left: 31px;
+}
