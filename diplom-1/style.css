@@ -1,5 +1,5 @@
 .page {
-    margin: 0;
+    margin: 0 auto;
     min-width: 1440px;
     max-width: 1920px;
     font-family: 'Roboto', Helvetica, sans-serif;
@@ -229,11 +229,11 @@
     font-size: 44px;
     line-height: 1.23;
     width: 520px;
-    margin: 7px auto;
+    margin: 7px auto 0;
 }
 
 .system-text {
-    margin: 15px 0 100px 0;
+    margin: 22px 0 100px 0;
 }
 
 .system-steps {
@@ -265,12 +265,14 @@
     font-size: 18px;
     line-height: 1.67;
     color: #656565;
+    margin: 0;
+    margin-top: 15px;
 }
 
 .system-buttons {
     display: flex;
     justify-content: center;
-    margin-top: 53px;
+    margin-top: 50px;
 }
 
 .system::after {
@@ -371,4 +373,30 @@
 
 .burger-images-right-column {
     margin-left: 31px;
+}
+
+.features {
+    text-align: center;
+}
+
+.features-thesis {
+    margin-top: 200px;
+    text-align: center;
+}
+
+.features-heading-2 {
+    width: 640px;
+    margin: 7px auto 0;
+}
+
+.feature-text {
+    margin: 22px auto 80px;
+}
+
+.feature-item-img {
+    width: 105px;
+}
+
+.feature-list {
+    margin-top: 80px;
 }
