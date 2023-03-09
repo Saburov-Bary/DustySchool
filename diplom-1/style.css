@@ -400,3 +400,92 @@
 .feature-list {
     margin-top: 80px;
 }
+
+.managment-owner {
+    display: flex;
+    margin-top: 400px;
+}
+.orange-square {
+    background-color: #ff5634;
+    width: 600px;
+    height: 690px;
+    border-radius: 32px;
+    position: relative;
+}
+
+.orange-img {
+    border-radius: 61px;
+    width: 340px;
+    margin: 224px 60px 124px 197px;
+    position: relative;
+}
+
+.orange-mobile {
+    position: absolute;
+    width: 350px;
+    top: 70px;
+    left: 60px;
+}
+
+.managment-about {
+    margin-left: 55px;
+}
+
+.managment-heading-3 {
+    margin: 0;
+    margin-top: 147px;
+    font-size: 44px;
+    line-height: 1.23;
+}
+
+.managment-text {
+    font-size: 18px;
+    line-height: 1.67;
+    margin: 0;
+    margin-top: 10px;
+    color: #656565;
+}
+
+.managment-plan {
+    display: flex;
+    margin-top: 33px;
+    align-items: flex-start;
+}
+
+.managment-plan-img {
+    width: 72px;
+    margin-right: 28px;
+}
+
+.managment-plan-heading-5 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    margin: 0;
+}
+
+.managment-plan-text {
+    font-size: 13px;
+    line-height: 2.31;
+    color: #656565;
+}
+
+.managment-plan-margin {
+    margin-top: 25px;
+}
+
+.managment-customer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 200px;
+}
+
+.orange-mobile-position {
+    top: 69px;
+    left: 189px;
+}
+
+.orange-img-position {
+    margin: 229px 197px 119px 60px;
+}
+
