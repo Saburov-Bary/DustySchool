@@ -600,3 +600,21 @@
     top: -72px;
     right: 191px;
 }
+
+.final {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 71px;
+}
+
+.final-paragraph {
+    width: 440px;
+}
+
+.logo-big {
+    width: 200px;
+}
+
+.final-buttons {
+    margin: auto 0;
+}
