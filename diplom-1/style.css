@@ -401,6 +401,10 @@
     margin-top: 80px;
 }
 
+.managment {
+    margin-bottom: 279px;
+}
+
 .managment-owner {
     display: flex;
     margin-top: 400px;
@@ -489,3 +493,78 @@
     margin: 229px 197px 119px 60px;
 }
 
+.feedback {
+    background-color: #fafafa;
+    margin: 0 -109px;
+    padding: 200px 109px 331px;
+}
+
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 41px;
+}
+
+.feedback-paragraph {
+    width: 465px;
+}
+
+.feedback-heading-4 {
+    font-weight: 400;
+    margin: 0;
+    width: 100%;
+}
+
+.feedback-header-text {
+    margin: 22px 0 0;
+}
+
+.feedback-buttons {
+    margin: auto 0;
+}
+
+.feedback-clients-row {
+    display: flex;
+    gap: 28px;
+    margin-top: 28px;
+}
+
+.feedback-clients-row:first-child {
+    margin-top: 0;
+}
+
+.feedback-client {
+    background-color: #fff;
+    border: 1px solid #EDEDED;
+    box-shadow: 0px 2px 12px rgba(16, 16, 16, 0.08);
+    border-radius: 24px;
+    padding: 41px 33px;
+}
+
+.feedback-client-header {
+    display: flex;
+    gap: 10px;
+}
+
+.client-photo {
+    width: 64px;
+}
+
+.client-name {
+    font-size: 18px;
+    line-height: 1.11;
+    margin: 9px 0 0;
+}
+
+.client-restaurant {
+    font-size: 16px;
+    line-height: 1.12;
+    color: #ff5634;
+    margin: 6px 0 0;
+}
+
+.feedback-client-text {
+    margin: 30px 0 0;
+    font-size: 18px;
+    line-height: 1.67;
+}
