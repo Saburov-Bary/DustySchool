@@ -605,6 +605,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: 71px;
+    position: relative;
 }
 
 .final-paragraph {
@@ -617,4 +618,117 @@
 
 .final-buttons {
     margin: auto 0;
+}
+
+.final:after {
+    position: absolute;
+    bottom: -77px;
+    background-color: #cacaca;
+    height: 1px;
+    content: '';
+    width: 100%;
+}
+
+.footer {
+    position: relative;
+}
+
+.footer::after {
+    position: absolute;
+    bottom: 95px;
+    background-color: #cacaca;
+    height: 1px;
+    content: '';
+    width: 100%;
+}
+
+.footer-navigation {
+    margin-top: 177px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-links {
+    display: flex;
+}
+
+.navigation-menu {
+    width: 222px;
+}
+
+.menu-label {
+    font-size: 20px;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.navigation-list {
+    margin: 0;
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: start;
+    height: 185px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation-item {
+    margin-top: 17px;
+}
+
+.navigation-item-link {
+    font-size: 18px;
+    line-height: 1.11;
+    color: #656565;
+    text-decoration: none;
+}
+
+.navigation-utility {
+    margin-left: 164px;
+}
+
+.navigation-utility-list {
+    height: 100%;
+}
+
+.towns {
+    margin-top: 41px;
+    display: flex;
+    gap: 29px;
+}
+
+.town-column {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.town {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.town-img {
+    width: 78px;
+}
+
+.town-name {
+    font-size: 18px;
+    line-height: 1.33;
+    margin: 0;
+}
+
+.copyright {
+    font-size: 18px;
+    line-height: 1.67;
+    margin: 150px auto 33px;
+    text-align: center;
+}
+
+.copyright-link {
+    color: #ff5634;
+    text-decoration: none;
 }
