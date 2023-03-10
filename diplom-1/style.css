@@ -568,3 +568,35 @@
     font-size: 18px;
     line-height: 1.67;
 }
+
+.black-section {
+    margin: 0 -109px;
+    padding: 0 109px;
+}
+
+.black-section-paragraph {
+    margin: 185px 0 176px;
+}
+
+.black-section-heading-2 {
+    margin: 0;
+    font-weight: 400;
+}
+
+.black-section-images {
+    position: relative;
+    width: 620px;
+    height: 100%;
+}
+
+.black-right-mobile {
+    position: absolute;
+    top: -91px;
+    right: -86px;
+}
+
+.black-left-mobile {
+    position: absolute;
+    top: -72px;
+    right: 191px;
+}
