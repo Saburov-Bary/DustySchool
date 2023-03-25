@@ -4,53 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../../style.css">
     <title>2.1 Введение в JavaScript</title>
 </head>
 <body>
-    <script>
-        // Нумерология
-        const userNumber = prompt('Введите число');
-        console.log('Ваше число четное - ' + (userNumber % 2 === 0));
-        console.log('В числе больше 1 знака - ' + (userNumber / 10 >= 1));
-        console.log('В числе больше 2 знаков - ' + (userNumber / 100 >= 1));
-        console.log('В числе больше 3 знаков - ' + (userNumber / 1000 >= 1));
-        console.log('Ваше число счастливое - ' + ((userNumber % 3 === 0) && (userNumber % 5 === 0) && (userNumber % 7 === 0)));
-
-        //Который? Щас
-        const userHour = prompt('Который сейчас час? Введите в 24-часовом формате');
-        const userMinutes = prompt('А сколько минут?');
-        console.log(`С начала дня прошло ${userHour * 60 * 60 + userMinutes * 60} секунд`);
-
-        //Аннушка
-        const ticketNumber = prompt('Введите номер билета (6 цифр строго! Если у вас больше или меньше 6 цифр, ваш билет не участвует в лотерее!)');
-        const ticketMoscowLeft = Math.floor(ticketNumber/1000);
-        const ticketMoscowRight = ticketNumber % 1000;
-        const sumMoscowLeft = Math.floor(ticketMoscowLeft/100) + Math.floor(ticketMoscowLeft % 100 / 10) + ticketMoscowLeft %10;
-        const sumMoscowRight = Math.floor(ticketMoscowRight/100) + Math.floor(ticketMoscowRight % 100 / 10) + ticketMoscowRight %10;
-        console.log('Ваш билет счастливый по Московской системе - ' + (sumMoscowLeft === sumMoscowRight));
-        const ticketPiterEven = Math.floor(ticketNumber/10000) % 10 + Math.floor(ticketNumber/100) % 10 + ticketNumber % 10;
-        const ticketPiterOdd = Math.floor(ticketNumber/100000) + Math.floor(ticketNumber/1000) % 10 + Math.floor(ticketNumber/10) % 10;
-        console.log('Ваш билет счастливый по Питерской системе - ' + (ticketPiterEven === ticketPiterOdd));
-        console.log('У вас СУПЕР-БИЛЕТ - ' + ((sumMoscowLeft === sumMoscowRight) && (ticketPiterEven === ticketPiterOdd)));
-
-        //⭐️ Конвертер цвета
-        const colorCode = prompt('Введите номер цвета в нотации HEX-кода, но без #');
-        let colorCodeDec = +('0x' + colorCode);
-        const blueLastNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        colorCodeDec = Math.floor(colorCodeDec / 16);
-        const blueFirstNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        const blueNumber = '0x' + blueFirstNumber + blueLastNumber;
-        colorCodeDec = Math.floor(colorCodeDec / 16);
-        const greenLastNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        colorCodeDec = Math.floor(colorCodeDec / 16);
-        const greenFirstNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        const greenNumber = '0x' + greenFirstNumber + greenLastNumber;
-        colorCodeDec = Math.floor(colorCodeDec / 16);
-        const redLastNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        colorCodeDec = Math.floor(colorCodeDec / 16);
-        const redFirstNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        const redNumber = '0x' + redFirstNumber + redLastNumber;
-        console.log(`Цвет в формате RGB: R:${+redNumber}, G:${+greenNumber}, B:${+blueNumber}`);
-    </script>
+    <h2>Домашние задания</h2>
+    <ul class="list">
+        <li>
+            <a class="link" href="./numberology.html">Нумерология</a>
+        </li>
+        <li>
+            <a class="link" href="./whattime.html">Который? Щас</a>
+        </li>
+        <li>
+            <a class="link" href="./annushka.html">Аннушка</a>
+        </li>
+        <li>
+            <a class="link" href="./colorconvert.html">⭐️ Конвертер цвета</a>
+        </li>
+    </ul>
 </body>
 </html>
