@@ -11,22 +11,10 @@
         //⭐️ Конвертер цвета
         const colorCode = prompt('Введите номер цвета в нотации HEX-кода, но без #');
         let colorCodeDec = +('0x' + colorCode);
-        const blueLastNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        colorCodeDec = Math.floor(colorCodeDec / 16);
-        const blueFirstNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        const blueNumber = '0x' + blueFirstNumber + blueLastNumber;
-        colorCodeDec = Math.floor(colorCodeDec / 16);
-        const greenLastNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        colorCodeDec = Math.floor(colorCodeDec / 16);
-        const greenFirstNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        const greenNumber = '0x' + greenFirstNumber + greenLastNumber;
-        colorCodeDec = Math.floor(colorCodeDec / 16);
-        const redLastNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        colorCodeDec = Math.floor(colorCodeDec / 16);
-        const redFirstNumber = (colorCodeDec - Math.floor(colorCodeDec / 16) * 16).toString(16);
-        const redNumber = '0x' + redFirstNumber + redLastNumber;
-        console.log(`Цвет в формате RGB: R:${+redNumber}, G:${+greenNumber}, B:${+blueNumber}`);
-
+        const blueNumber = colorCodeDec%(16**2);
+        const greenNumber = Math.floor(colorCodeDec / (16**2)) % (16**2);
+        const redNumber = Math.floor(colorCodeDec / (16**4)) % (16**2);
+        console.log(`Цвет в формате RGB: R:${redNumber}, G:${greenNumber}, B:${blueNumber}`);
     </script>
 </body>
 </html>
