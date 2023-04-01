@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ## Ход ладьи
+        const startPositionX = +prompt('введите местонахождение фигуры по горизонтали: цифру от 1 до 8');
+        const startPositionY = +prompt('введите местонахождение фигуры по вертикали: цифру от 1 до 8');
+        const endPositionX = +prompt('введите место назначение фигуры по горизонтали: цифру от 1 до 8');
+        const endPositionY = +prompt('введите место назначение фигуры по вертикали: цифру от 1 до 8');
+        
+        const axis = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+
+        if (startPositionX === endPositionX || startPositionY === endPositionY) {
+            alert(`Ладья из клетки ${axis[startPositionX - 1] + startPositionY} на клетку ${axis[endPositionX - 1] + endPositionY} доберется за 1 ход`);
+        } else {
+            alert(`Ладья из клетки ${axis[startPositionX - 1] + startPositionY} на клетку ${axis[endPositionX - 1] + endPositionY} доберется за 2 хода`);
+        }
+    </script>
+</body>
+</html>
