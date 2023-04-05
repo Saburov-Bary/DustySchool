@@ -21,10 +21,16 @@
         const turtleSpeed = +prompt('Укажите скорость черепахи:');
         const distance = +prompt('Укажите расстояние между Ахиллесом и черепахой:');
         const newDistance = +prompt('Укажите расстояние, на которое хотите, чтобы Ахиллес приблизился к черепахе');
+
+        if (distance === newDistance) {
+            alert('Ахиллес уже на желаемом расстоянии от черепахи! Для этого нужно 0 рывков!');
+        }
+
         let stepTime = distance / achillesSpeed;
         let turtleDistance = stepTime * turtleSpeed;
         let achillesDistance = stepTime * achillesSpeed;
         let step = 0;
+
         if (turtleSpeed >= achillesSpeed) {
             alert('Ахиллес никогда не догонит черепаху!');
         } else {
