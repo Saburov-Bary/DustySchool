@@ -9,17 +9,15 @@
 <body>
     <script>
         // ## Ход ладьи
-        const startPositionX = +prompt('введите местонахождение фигуры по горизонтали: цифру от 1 до 8');
+        const startPositionX = prompt('введите местонахождение фигуры по горизонтали: букву от A до H');
         const startPositionY = +prompt('введите местонахождение фигуры по вертикали: цифру от 1 до 8');
-        const endPositionX = +prompt('введите место назначение фигуры по горизонтали: цифру от 1 до 8');
+        const endPositionX = prompt('введите место назначение фигуры по горизонтали: букву от A до H');
         const endPositionY = +prompt('введите место назначение фигуры по вертикали: цифру от 1 до 8');
-        
-        const axis = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
         if (startPositionX === endPositionX || startPositionY === endPositionY) {
-            alert(`Ладья из клетки ${axis[startPositionX - 1] + startPositionY} на клетку ${axis[endPositionX - 1] + endPositionY} доберется за 1 ход`);
+            alert(`Ладья из клетки ${startPositionX + startPositionY} на клетку ${endPositionX + endPositionY} доберется за 1 ход`);
         } else {
-            alert(`Ладья из клетки ${axis[startPositionX - 1] + startPositionY} на клетку ${axis[endPositionX - 1] + endPositionY} доберется за 2 хода`);
+            alert(`Ладья из клетки ${startPositionX + startPositionY} на клетку ${endPositionX + endPositionY} доберется за 2 хода`);
         }
     </script>
 </body>

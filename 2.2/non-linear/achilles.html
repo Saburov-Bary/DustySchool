@@ -17,7 +17,25 @@
         Предполагается, что на все вопросы пользователь отвечает неотрицательными числами. Числа могут быть дробными.
         Определите, за сколько полных рывков Ахилесс приблизится к черепахе на расстояние, указанное последним, или ближе. Если приблизится на такое расстояние
         не удастся никогда – сообщите об этом.*/
-        alert('пока не готово')
+        const achillesSpeed = +prompt('Укажите скорость Ахиллеса:');
+        const turtleSpeed = +prompt('Укажите скорость черепахи:');
+        const distance = +prompt('Укажите расстояние между Ахиллесом и черепахой:');
+        const newDistance = +prompt('Укажите расстояние, на которое хотите, чтобы Ахиллес приблизился к черепахе');
+        let stepTime = distance / achillesSpeed;
+        let turtleDistance = stepTime * turtleSpeed;
+        let achillesDistance = stepTime * achillesSpeed;
+        let step = 0;
+        if (turtleSpeed >= achillesSpeed) {
+            alert('Ахиллес никогда не догонит черепаху!');
+        } else {
+            while (turtleDistance >= newDistance) {
+                achillesDistance = stepTime * achillesSpeed;
+                turtleDistance = stepTime * turtleSpeed;
+                stepTime = turtleDistance / achillesSpeed;
+                step++;
+            }
+            alert('Ахиллес догонет черепаху за ' + step + ' полных рывков');
+        }
     </script>
 </body>
 </html>

@@ -11,15 +11,15 @@
         //  ## Орёл или решка
         let playerScore = 100;
         let compScore = 100;
-        let bet, playerAnswer, coin; 
+        let playerAnswer; 
         while (playerScore > 0 && compScore > 0) {
-            bet = +prompt(`Делайте вашу ставку: от 1 до ${playerScore} тугриков`);
+            const bet = +prompt(`Делайте вашу ставку: от 1 до ${playerScore} тугриков`);
 
             while (playerAnswer !== 'орел' && playerAnswer !== 'решка') {
                 playerAnswer = prompt('Делайте вашу ставку: "орел" или "решка"?');
             }
 
-            coin = Math.random();
+            const coin = Math.random();
             
             if (coin <= 0.5) {
                 alert('Выпал орел!');
