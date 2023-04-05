@@ -28,13 +28,13 @@
         if (turtleSpeed >= achillesSpeed) {
             alert('Ахиллес никогда не догонит черепаху!');
         } else {
-            while (turtleDistance >= newDistance) {
+            while (turtleDistance > newDistance) {
                 achillesDistance = stepTime * achillesSpeed;
                 turtleDistance = stepTime * turtleSpeed;
                 stepTime = turtleDistance / achillesSpeed;
                 step++;
             }
-            alert('Ахиллес догонет черепаху за ' + step + ' полных рывков');
+            alert('Ахиллес приблизится к черепахе на расстояние ' + newDistance + ' за ' + step + ' полных рывка(ов)');
         }
     </script>
 </body>
