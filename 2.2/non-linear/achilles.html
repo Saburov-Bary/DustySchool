@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         /*## ⭐️ Ахилесс-недогоняка
@@ -21,18 +23,17 @@
         const turtleSpeed = +prompt('Укажите скорость черепахи:');
         const distance = +prompt('Укажите расстояние между Ахиллесом и черепахой:');
         const newDistance = +prompt('Укажите расстояние, на которое хотите, чтобы Ахиллес приблизился к черепахе');
-
-        if (distance === newDistance) {
-            alert('Ахиллес уже на желаемом расстоянии от черепахи! Для этого нужно 0 рывков!');
-        }
-
         let stepTime = distance / achillesSpeed;
         let turtleDistance = stepTime * turtleSpeed;
         let achillesDistance = stepTime * achillesSpeed;
         let step = 0;
 
-        if (turtleSpeed >= achillesSpeed) {
+        if (distance === newDistance) {
+            alert('Ахиллес уже на желаемом расстоянии от черепахи! Для этого нужно ' + step + ' рывков!');
+        } else if (turtleSpeed >= achillesSpeed) {
             alert('Ахиллес никогда не догонит черепаху!');
+        } else if (turtleDistance <= newDistance) {
+            alert('Ахиллес приблизится к черепахе на расстояние ' + newDistance + ' за 1 полный рывок');
         } else {
             while (turtleDistance > newDistance) {
                 achillesDistance = stepTime * achillesSpeed;
@@ -45,3 +46,13 @@
     </script>
 </body>
 </html>
+
+<!-- do {
+    achillesDistance = stepTime * achillesSpeed;
+    turtleDistance = stepTime * turtleSpeed;
+    stepTime = turtleDistance / achillesSpeed;
+    step++;
+}
+while (turtleDistance > newDistance)
+alert('Ахиллес приблизится к черепахе на расстояние ' + newDistance + ' за ' + step + ' полных рывка(ов)');
+} -->
