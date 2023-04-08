@@ -32,27 +32,16 @@
             alert('Ахиллес уже на желаемом расстоянии от черепахи! Для этого нужно ' + step + ' рывков!');
         } else if (turtleSpeed >= achillesSpeed) {
             alert('Ахиллес никогда не догонит черепаху!');
-        } else if (turtleDistance <= newDistance) {
-            alert('Ахиллес приблизится к черепахе на расстояние ' + newDistance + ' за 1 полный рывок');
         } else {
-            while (turtleDistance > newDistance) {
+            do {
                 achillesDistance = stepTime * achillesSpeed;
                 turtleDistance = stepTime * turtleSpeed;
                 stepTime = turtleDistance / achillesSpeed;
                 step++;
             }
+            while (turtleDistance > newDistance)
             alert('Ахиллес приблизится к черепахе на расстояние ' + newDistance + ' за ' + step + ' полных рывка(ов)');
         }
     </script>
 </body>
 </html>
-
-<!-- do {
-    achillesDistance = stepTime * achillesSpeed;
-    turtleDistance = stepTime * turtleSpeed;
-    stepTime = turtleDistance / achillesSpeed;
-    step++;
-}
-while (turtleDistance > newDistance)
-alert('Ахиллес приблизится к черепахе на расстояние ' + newDistance + ' за ' + step + ' полных рывка(ов)');
-} -->
