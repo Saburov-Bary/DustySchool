@@ -9,7 +9,7 @@
 <body>
     <script>
         function askQuestion(question, cb) {
-            let answer = prompt(question);
+            let answer;
             while (cb(answer) !== true) {
                 answer = prompt(cb(answer) + question)
             }
