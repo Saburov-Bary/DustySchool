@@ -7,17 +7,33 @@
     <title>Игра в города</title>
 </head>
 <body>
+    <!-- Мы спрашиваем у пользователя город, после чего спрашиваем далее. Каждый следующий город должен начинаться на последнюю букву предыдущего города.
+    Считаем, что все города вводятся с маленькой буквы. Не нужно проверять, что город существует, верим на слово.
+    Повторять города нельзя! Если город повторяется, игра заканчивается. Если пользователь вводит город начиная с неправильной буквы, надо попросить ввести
+    правильный город. Также, игра заканчивается если пользователь отказывается ввести город -->
     <script>
         const cities = [];
-        let city;
         let prevCity = prompt("Игра началась. Введите любой город");
+        let city = prevCity;
 
-        while (prevCity !== null || !cities.includes(prevCity)) {
-            while (Array.from(prevCity)[prevCity.length - 1] !== Array.from(prevCity)[0]) {
-                city = prompt(`Введите город на букву ${Array.from(prevCity)[prevCity.length - 1]}`);
-            }
-
+        while (prevCity) {
             cities.push(prevCity);
+            city = prompt(`Введите город на букву ${Array.from(prevCity)[prevCity.length - 1]}`);
+
+            while (city) {
+                console.log(cities);
+                if (Array.from(prevCity)[prevCity.length - 1] !== Array.from(city)[0]) {
+                    city = prompt(`Неверный город! Введите город на букву ${Array.from(prevCity)[prevCity.length - 1]}`);
+                } else if (cities.includes(city)) {
+                    city = prompt(`Введите другой город на букву ${Array.from(prevCity)[prevCity.length - 1]}`);
+                }
+                prevCity = city;
+                if (!cities.includes(city)) {
+                    cities.push(prevCity);
+                }
+            }
+            console.log(cities);
+            break;
         }
         console.log(cities);
     </script>
