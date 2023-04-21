@@ -13,29 +13,25 @@
     правильный город. Также, игра заканчивается если пользователь отказывается ввести город -->
     <script>
         const cities = [];
-        let prevCity = prompt("Игра началась. Введите любой город");
-        let city = prevCity;
+        let newCity = prompt("Игра началась. Введите любой город");
+        cities.push(newCity);
 
-        while (prevCity) {
-            cities.push(prevCity);
-            city = prompt(`Введите город на букву ${Array.from(prevCity)[prevCity.length - 1]}`);
+        while (newCity !== null) {
+            let lastCity = cities[cities.length - 1];
+            let lastCityLetter = Array.from(lastCity)[lastCity.length - 1];
+            newCity = prompt(`Введите город на букву ${lastCityLetter}`);
 
-            while (city) {
-                console.log(cities);
-                if (Array.from(prevCity)[prevCity.length - 1] !== Array.from(city)[0]) {
-                    city = prompt(`Неверный город! Введите город на букву ${Array.from(prevCity)[prevCity.length - 1]}`);
-                } else if (cities.includes(city)) {
-                    city = prompt(`Введите другой город на букву ${Array.from(prevCity)[prevCity.length - 1]}`);
+            while (newCity !== null && (Array.from(newCity)[0] !== lastCityLetter || cities.includes(newCity))) {
+                if (cities.includes(newCity)) {
+                    alert("Такой город уже существует!");
                 }
-                prevCity = city;
-                if (!cities.includes(city)) {
-                    cities.push(prevCity);
-                }
+                newCity = prompt(`Введите город на букву ${lastCityLetter}`)               
             }
-            console.log(cities);
-            break;
+
+            cities.push(newCity);
         }
-        console.log(cities);
+
+        console.log(cities.filter(Boolean));
     </script>
 </body>
 </html>
