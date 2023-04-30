@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Типы на стол</title>
+</head>
+<body>
+    <script>
+        const firstTestObject = { test: 134 };
+        const secondTestObject = { test: 'hello' };
+        const thirdTestObject = {
+            test: undefined,
+            anotherField: [],
+            yetAnother: [undefined],
+        };
+        const forthTestObject = {
+            test: undefined,
+            anotherField: [],
+            undefined: null,
+        };
+
+        function valueToType (obj) {
+            //let regex = /^\[object (\S+?)\]$/;
+            const objectValues = Object.values(obj);
+            const result = {};
+            // let typeOfValue;
+
+            for (let i = 0; i < objectValues.length; i++) {
+                let counter = 0;
+                //let typeOfValue = Object.prototype.toString.call(objectValues[i]).match(regex) || [];
+                
+                objectValues.forEach(element => {
+                    //let typeOfElement = Object.prototype.toString.call(element).match(regex) || [];
+                    //if ((typeOfElement[1] || 'undefined').toLowerCase() === (typeOfValue[1] || 'undefined').toLowerCase()) {
+                    //    counter += 1;
+                    //}
+
+                    if (Array.isArray(objectValues[i]) && Array.isArray(element)) {
+                        typeOfValue = 'Array';
+                        counter += 1;
+                    } else if (objectValues[i] === null && element === null) {
+                        typeOfValue = 'null';
+                        counter += 1;
+                    } else if (typeof(objectValues[i]) === 'number' && typeof(element) === 'number' && isNaN(objectValues[i]) && isNaN(element)) {
+                        typeOfValue = 'NaN';
+                        counter += 1;
+                    } else if (typeof(element) === typeof(objectValues[i]) && !Array.isArray(element) && !Array.isArray(objectValues[i]) && element !== null && objectValues !== null) {
+                        typeOfValue = typeof(objectValues[i]);
+                        counter += 1;
+                    }
+                });
+                //result[(typeOfValue[1] || 'undefined').toLowerCase()] = counter;
+                result[typeOfValue] = counter;
+            }
+            
+            return result;
+        }
+
+        console.log(valueToType(firstTestObject));
+        console.log(valueToType(secondTestObject));
+        console.log(valueToType(thirdTestObject));
+        console.log(valueToType(forthTestObject));
+    </script>
+</body>
+</html>

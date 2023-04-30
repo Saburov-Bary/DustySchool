@@ -15,6 +15,84 @@
     ({}]) // некорректно, нет открывающей [ перед ]
     ({}[()]) // корректно -->
     <script>
+        //const bracketsString = prompt('введите произвольные скобки');
+        const bracketsString = '({}[()])';
+        const openedBrackets = ['[', '{', '('];
+        const closedBrackets = [']', '}', ')'];
+        const bracketsStack = [];
+        const bracketsArray = Array.from(bracketsString);
+        console.log(bracketsArray);
+
+        squareBracketAmount = [']', 0, 0];
+        braceBracketAmount = ['}', 0, 0];
+        parenthesisBracketAmount = [')', 0,0];
+
+        for (let i = 0; i < bracketsArray.length; i++) {
+            // bracketsStack.push(bracketsArray[i]);
+            if (squareBracketAmount.includes(bracketsArray[i])) {
+                if (braceBracketAmount[1] != braceBracketAmount[2] || parenthesisBracketAmount[1] != parenthesisBracketAmount[2]) {
+                    alert('Скобки расставлены некорректно');
+                    break;
+                }
+            }
+
+            if (braceBracketAmount.includes(bracketsArray[i])) {
+                if (squareBracketAmount[1] != squareBracketAmount[2] || parenthesisBracketAmount[1] != parenthesisBracketAmount[2]) {
+                    alert('Скобки расставлены некорректно');
+                    break;
+                }
+            }
+
+            if (parenthesisBracketAmount.includes(bracketsArray[i])) {
+                if (braceBracketAmount[1] != braceBracketAmount[2] || squareBracketAmount[1] != squareBracketAmount[2]) {
+                    alert('Скобки расставлены некорректно');
+                    break;
+                }
+            }
+
+            if (bracketsArray[i] === '[') {
+                squareBracketAmount[1] += 1;
+            } else if (bracketsArray[i] === ']') {
+                squareBracketAmount[2] += 1;
+            } else if (bracketsArray[i] === '{') {
+                braceBracketAmount[1] += 1;
+            } else if (bracketsArray[i] === '}') {
+                braceBracketAmount[2] += 1;
+            } else if (bracketsArray[i] === '(') {
+                parenthesisBracketAmount[1] += 1;
+            } else if (bracketsArray[i] === ')') {
+                parenthesisBracketAmount[2] += 1;
+            }
+
+
+            if (closedSquareBracketAmount = openSquareBracketAmount || closedBraceBracketAmount > openBraceBracketAmount || closedParenthesisBracketAmount > openParenthesisBracketAmount) {
+                alert('Скобки расставлены некорректно');
+                break;
+            }
+
+            alert('Скобки расставлены корректно');
+        }
+        // function getAllIndexes(array, value) {
+        //     let indexes = [];
+        //     for (let i = 0; i < array.length; i++) {
+        //         if (array[i] === value) {
+        //             indexes.push(i);
+        //         }
+        //     }
+        //     return indexes;
+        // }
+
+        // openSquareBracketIndexes = getAllIndexes(bracketsArray, '[');
+        // closedSquareBracketIndexes = getAllIndexes(bracketsArray, ']');
+        // openBraceIndexes = getAllIndexes(bracketsArray,'{');
+        // closedBraceIndexes = getAllIndexes(bracketsArray, '}');
+        // openParenthesisIndexes = getAllIndexes(bracketsArray, '(');
+        // closedParenthesisIndexes = getAllIndexes(bracketsArray, ')');
+
+        // console.log(openSquareBracketIndexes, closedSquareBracketIndexes);
+        // console.log(openBraceIndexes, closedBraceIndexes);
+        // console.log(openParenthesisIndexes, closedParenthesisIndexes);
+
 
     </script>
 </body>

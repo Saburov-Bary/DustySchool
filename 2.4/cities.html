@@ -13,19 +13,21 @@
     правильный город. Также, игра заканчивается если пользователь отказывается ввести город -->
     <script>
         const cities = [];
-        let newCity = prompt("Игра началась. Введите любой город");
+        let newCity = prompt('Игра началась. Введите любой город');
         cities.push(newCity);
+        newCity='';
 
         while (newCity !== null) {
             let lastCity = cities[cities.length - 1];
             let lastCityLetter = Array.from(lastCity)[lastCity.length - 1];
-            newCity = prompt(`Введите город на букву ${lastCityLetter}`);
 
-            while (newCity !== null && (Array.from(newCity)[0] !== lastCityLetter || cities.includes(newCity))) {
-                if (cities.includes(newCity)) {
-                    alert("Такой город уже существует!");
-                }
+            while (newCity !== null && Array.from(newCity)[0] !== lastCityLetter) {
                 newCity = prompt(`Введите город на букву ${lastCityLetter}`)               
+            }
+
+            if (cities.includes(newCity)) {
+                    alert('Увы, вы проиграли. Такой город уже называли!');
+                    break;
             }
 
             cities.push(newCity);

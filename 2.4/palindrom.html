@@ -9,10 +9,9 @@
 <body>
     <script>
         const palindrome = prompt('Введите любое слово строчными буквами');
-        let index = palindrome.length;
 
-        if ((Array.from(palindrome).every(function(value) {
-            index -= 1;
+        if ((Array.from(palindrome).every(function(value, index) {
+            index = palindrome.length - 1 - index;
             return value === palindrome[index];
         }
         ))) {
@@ -20,6 +19,7 @@
         } else {
             console.log("слово '" + palindrome + "' - НЕ палиндром");
         }
+        
     </script>
 </body>
 </html>
