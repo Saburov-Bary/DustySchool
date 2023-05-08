@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Осторожно, скобки закрываются</title>
 </head>
 <body>
     <!-- Пользователь вводит некоторый текст. Проверить, что скобки (), {}, [] в нем закрыты корректно, без нарушения вложенности.
@@ -15,84 +15,44 @@
     ({}]) // некорректно, нет открывающей [ перед ]
     ({}[()]) // корректно -->
     <script>
-        //const bracketsString = prompt('введите произвольные скобки');
-        const bracketsString = '({}[()])';
-        const openedBrackets = ['[', '{', '('];
-        const closedBrackets = [']', '}', ')'];
-        const bracketsStack = [];
-        const bracketsArray = Array.from(bracketsString);
-        console.log(bracketsArray);
+        const bracketsString1 = '({}[()])';
+        const bracketsString2 = '({})';
+        const bracketsString3 = '({)}';
+        const bracketsString4 = '[({})';
+        const bracketsString5 = '({}])';
+        const bracketsString6 = '()[{()}]';
 
-        squareBracketAmount = [']', 0, 0];
-        braceBracketAmount = ['}', 0, 0];
-        parenthesisBracketAmount = [')', 0,0];
-
-        for (let i = 0; i < bracketsArray.length; i++) {
-            // bracketsStack.push(bracketsArray[i]);
-            if (squareBracketAmount.includes(bracketsArray[i])) {
-                if (braceBracketAmount[1] != braceBracketAmount[2] || parenthesisBracketAmount[1] != parenthesisBracketAmount[2]) {
-                    alert('Скобки расставлены некорректно');
-                    break;
+        function checkBrackets(inputBracketsString) {
+            const openedBrackets = ['[', '{', '('];
+            const closedBrackets = [']', '}', ')'];
+            const bracketsStack = [];
+            const bracketsArray = Array.from(inputBracketsString);
+        
+            for (let i = 0; i < bracketsArray.length; i++) {
+                bracketsStack.push(bracketsArray[i]);
+                prevBracketIndex = bracketsStack.length - 2;
+                curBracketIndex = bracketsStack.length - 1;
+                
+                if (closedBrackets.includes(bracketsStack[curBracketIndex]) &&
+                    openedBrackets.indexOf(bracketsStack[prevBracketIndex]) === closedBrackets.indexOf(bracketsStack[curBracketIndex])
+                    ) {
+                    bracketsStack.splice(prevBracketIndex, 2);
                 }
             }
 
-            if (braceBracketAmount.includes(bracketsArray[i])) {
-                if (squareBracketAmount[1] != squareBracketAmount[2] || parenthesisBracketAmount[1] != parenthesisBracketAmount[2]) {
-                    alert('Скобки расставлены некорректно');
-                    break;
-                }
-            }
-
-            if (parenthesisBracketAmount.includes(bracketsArray[i])) {
-                if (braceBracketAmount[1] != braceBracketAmount[2] || squareBracketAmount[1] != squareBracketAmount[2]) {
-                    alert('Скобки расставлены некорректно');
-                    break;
-                }
-            }
-
-            if (bracketsArray[i] === '[') {
-                squareBracketAmount[1] += 1;
-            } else if (bracketsArray[i] === ']') {
-                squareBracketAmount[2] += 1;
-            } else if (bracketsArray[i] === '{') {
-                braceBracketAmount[1] += 1;
-            } else if (bracketsArray[i] === '}') {
-                braceBracketAmount[2] += 1;
-            } else if (bracketsArray[i] === '(') {
-                parenthesisBracketAmount[1] += 1;
-            } else if (bracketsArray[i] === ')') {
-                parenthesisBracketAmount[2] += 1;
-            }
-
-
-            if (closedSquareBracketAmount = openSquareBracketAmount || closedBraceBracketAmount > openBraceBracketAmount || closedParenthesisBracketAmount > openParenthesisBracketAmount) {
+            if (bracketsStack.length === 0) {
+                alert('Скобки расставлены корректно');
+            } else {
                 alert('Скобки расставлены некорректно');
-                break;
             }
-
-            alert('Скобки расставлены корректно');
         }
-        // function getAllIndexes(array, value) {
-        //     let indexes = [];
-        //     for (let i = 0; i < array.length; i++) {
-        //         if (array[i] === value) {
-        //             indexes.push(i);
-        //         }
-        //     }
-        //     return indexes;
-        // }
 
-        // openSquareBracketIndexes = getAllIndexes(bracketsArray, '[');
-        // closedSquareBracketIndexes = getAllIndexes(bracketsArray, ']');
-        // openBraceIndexes = getAllIndexes(bracketsArray,'{');
-        // closedBraceIndexes = getAllIndexes(bracketsArray, '}');
-        // openParenthesisIndexes = getAllIndexes(bracketsArray, '(');
-        // closedParenthesisIndexes = getAllIndexes(bracketsArray, ')');
-
-        // console.log(openSquareBracketIndexes, closedSquareBracketIndexes);
-        // console.log(openBraceIndexes, closedBraceIndexes);
-        // console.log(openParenthesisIndexes, closedParenthesisIndexes);
-
+        checkBrackets(bracketsString1);
+        checkBrackets(bracketsString2);
+        checkBrackets(bracketsString3);
+        checkBrackets(bracketsString4);
+        checkBrackets(bracketsString5);
+        checkBrackets(bracketsString6);
 
     </script>
 </body>

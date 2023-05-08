@@ -43,10 +43,7 @@
                     } else if (objectValues[i] === null && element === null) {
                         typeOfValue = 'null';
                         counter += 1;
-                    } else if (typeof(objectValues[i]) === 'number' && typeof(element) === 'number' && isNaN(objectValues[i]) && isNaN(element)) {
-                        typeOfValue = 'NaN';
-                        counter += 1;
-                    } else if (typeof(element) === typeof(objectValues[i]) && !Array.isArray(element) && !Array.isArray(objectValues[i]) && element !== null && objectValues !== null) {
+                    } else if (typeof(element) === typeof(objectValues[i]) && !Array.isArray(element) && element !== null) {
                         typeOfValue = typeof(objectValues[i]);
                         counter += 1;
                     }

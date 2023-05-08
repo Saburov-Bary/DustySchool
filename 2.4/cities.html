@@ -12,28 +12,32 @@
     Повторять города нельзя! Если город повторяется, игра заканчивается. Если пользователь вводит город начиная с неправильной буквы, надо попросить ввести
     правильный город. Также, игра заканчивается если пользователь отказывается ввести город -->
     <script>
-        const cities = [];
-        let newCity = prompt('Игра началась. Введите любой город');
-        cities.push(newCity);
-        newCity='';
-
-        while (newCity !== null) {
-            let lastCity = cities[cities.length - 1];
-            let lastCityLetter = Array.from(lastCity)[lastCity.length - 1];
-
-            while (newCity !== null && Array.from(newCity)[0] !== lastCityLetter) {
-                newCity = prompt(`Введите город на букву ${lastCityLetter}`)               
-            }
-
-            if (cities.includes(newCity)) {
-                    alert('Увы, вы проиграли. Такой город уже называли!');
-                    break;
-            }
-
+        function gameOfCities() {
+            const cities = [];
+            let newCity = prompt('Игра началась. Введите любой город');
             cities.push(newCity);
+            newCity='';
+
+            while (newCity !== null) {
+                newCity = '';
+                let lastCity = cities[cities.length - 1];
+                let lastCityLetter = Array.from(lastCity)[lastCity.length - 1];
+
+                while (newCity !== null && Array.from(newCity)[0] !== lastCityLetter) {
+                    newCity = prompt(`Введите город на букву ${lastCityLetter}`)               
+                }
+
+                if (cities.includes(newCity)) {
+                        alert('Увы, вы проиграли. Такой город уже называли!');
+                        alert(cities.filter(Boolean));
+                        break;
+                }
+
+                cities.push(newCity);
+            }
         }
 
-        console.log(cities.filter(Boolean));
+        gameOfCities();
     </script>
 </body>
 </html>

@@ -27,18 +27,19 @@
 
         function sumOfObject(firstObject, secondObject) {
             const resultObject = {};
-            for (const keyFirstObject in firstObject) {
-                for (const keySecondObject in secondObject) {
-                    if (secondObject[keyFirstObject] === undefined) {
-                        resultObject[keyFirstObject] = firstObject[keyFirstObject]; 
-                    } else {
-                        resultObject[keyFirstObject] = firstObject[keyFirstObject] + secondObject[keyFirstObject];
-                    }  
-                    if (firstObject[keySecondObject] === undefined) {
-                        resultObject[keySecondObject] = secondObject[keySecondObject]; 
-                    }                 
-                }            
-            }
+            
+            // for (const keyFirstObject in firstObject) {
+            //     for (const keySecondObject in secondObject) {
+            //         if (secondObject[keyFirstObject] === undefined) {
+            //             resultObject[keyFirstObject] = firstObject[keyFirstObject]; 
+            //         } else {
+            //             resultObject[keyFirstObject] = firstObject[keyFirstObject] + secondObject[keyFirstObject];
+            //         }  
+            //         if (firstObject[keySecondObject] === undefined) {
+            //             resultObject[keySecondObject] = secondObject[keySecondObject]; 
+            //         }                 
+            //     }            
+            // }
             return resultObject;
         }
 
