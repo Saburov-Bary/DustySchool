@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Решение задач с leetcode</title>
+</head>
+<body>
+    <script>
+        function memoize(fn) {
+            let callCount = 0;
+            const prevArgs = [];
+            console.log(prevArgs);
+
+            return function(...args) {
+
+                // stringifiedPrevArgs = JSON.stringify(prevArgs);
+                // stringifiedArgs = JSON.stringify(args);
+                // console.log('compares: ' + JSON.stringify(prevArgs) === JSON.stringify(args));
+                // console.log('prevArgs = ' + prevArgs);
+                console.log(prevArgs);
+                console.log(args);
+                // console.log('stringifyArgs = ' + JSON.stringify(args));
+                let checkSameArgs = [];
+                let result = 0;
+                // console.log('args = ' + Array.from(args));
+                // console.log('args.length = ' + args.lemgth);
+                // console.log(typeof(args));
+
+                if (prevArgs.length > 0) {
+                    checkSameArgs = prevArgs.filter(element => {
+                    for (let i = 0; i < element.length; i++) {
+                        // console.log('element[i] = ' + element[i]);
+                        // console.log('element.length = ' + element.length);
+                        // console.log('args[i] = ' + args[i]);
+                        element[i] === args[i];
+                        }
+                    })
+                    console.log('checkSameArgs = ' + checkSameArgs);
+                }
+
+                //console.log('checkSameArgs = ' + checkSameArgs);
+                //console.log(Boolean(checkSameArgs.length === 0));
+
+                if(checkSameArgs.length > 0) {
+                    callCount += 1;
+                    prevArgs.push(args);
+                }
+                // console.log('prevArgs = ' + prevArgs);  
+                // console.log('prevArgs.length = ' + prevArgs.length);  
+
+                for (var i = 0; i < arguments.length; i++) {
+                    result += arguments[i];
+                }
+
+                console.log('callCount = ' + callCount);
+                return result;
+            }
+        }
+
+        const sum = (a, b) => a + b;
+        const memoizedSum = memoize(sum);
+
+    </script>
+</body>
+</html>

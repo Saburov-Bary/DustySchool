@@ -36,7 +36,7 @@
                     //if ((typeOfElement[1] || 'undefined').toLowerCase() === (typeOfValue[1] || 'undefined').toLowerCase()) {
                     //    counter += 1;
                     //}
-
+                    console.log(objectValues[i] === element);
                     if (Array.isArray(objectValues[i]) && Array.isArray(element)) {
                         typeOfValue = 'Array';
                         counter += 1;
@@ -55,9 +55,9 @@
             return result;
         }
 
-        console.log(valueToType(firstTestObject));
-        console.log(valueToType(secondTestObject));
-        console.log(valueToType(thirdTestObject));
+        // console.log(valueToType(firstTestObject));
+        // console.log(valueToType(secondTestObject));
+        // console.log(valueToType(thirdTestObject));
         console.log(valueToType(forthTestObject));
     </script>
 </body>
