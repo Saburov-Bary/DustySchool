@@ -22,42 +22,29 @@
         };
 
         function valueToType (obj) {
-            //let regex = /^\[object (\S+?)\]$/;
             const objectValues = Object.values(obj);
             const result = {};
-            // let typeOfValue;
+            let typeOfValue = '';
 
-            for (let i = 0; i < objectValues.length; i++) {
-                let counter = 0;
-                //let typeOfValue = Object.prototype.toString.call(objectValues[i]).match(regex) || [];
-                
-                objectValues.forEach(element => {
-                    //let typeOfElement = Object.prototype.toString.call(element).match(regex) || [];
-                    //if ((typeOfElement[1] || 'undefined').toLowerCase() === (typeOfValue[1] || 'undefined').toLowerCase()) {
-                    //    counter += 1;
-                    //}
-                    console.log(objectValues[i] === element);
-                    if (Array.isArray(objectValues[i]) && Array.isArray(element)) {
-                        typeOfValue = 'Array';
-                        counter += 1;
-                    } else if (objectValues[i] === null && element === null) {
-                        typeOfValue = 'null';
-                        counter += 1;
-                    } else if (typeof(element) === typeof(objectValues[i]) && !Array.isArray(element) && element !== null) {
-                        typeOfValue = typeof(objectValues[i]);
-                        counter += 1;
-                    }
-                });
-                //result[(typeOfValue[1] || 'undefined').toLowerCase()] = counter;
-                result[typeOfValue] = counter;
-            }
-            
+            objectValues.forEach(element => {
+                if (Array.isArray(element)) {
+                    typeOfValue = 'Array';
+                    result[typeOfValue] === undefined ? result[typeOfValue] = 1 : result[typeOfValue] += 1;
+                } else if (element === null) {
+                    typeOfValue = 'null';
+                    result[typeOfValue] === undefined ? result[typeOfValue] = 1 : result[typeOfValue] += 1;
+                } else {
+                    typeOfValue = typeof(element);
+                    result[typeOfValue] === undefined ? result[typeOfValue] = 1 : result[typeOfValue] += 1;
+                }
+            });
+                        
             return result;
         }
 
-        // console.log(valueToType(firstTestObject));
-        // console.log(valueToType(secondTestObject));
-        // console.log(valueToType(thirdTestObject));
+        console.log(valueToType(firstTestObject));
+        console.log(valueToType(secondTestObject));
+        console.log(valueToType(thirdTestObject));
         console.log(valueToType(forthTestObject));
     </script>
 </body>
