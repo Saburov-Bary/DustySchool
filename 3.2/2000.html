@@ -152,7 +152,7 @@
                     })
                     .forEach(function (element, index) {
                         citiesList[index].textContent = element.city;
-                        distanceList[index].textContent = element.distance + 'm';
+                        distanceList[index].textContent = element.distance + 'km';
                         distanceList[index].style.width = element.distance / citiesToCompare[citiesToCompare.length - 1].distance * 100 + '%';
                         distanceList[index].style.background = element.color;
                         currentLocationText.classList.remove('hidden');
