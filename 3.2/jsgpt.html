@@ -63,6 +63,7 @@
                 setTimeout(function() {
                     copyOk.classList.toggle('hidden');
                 }, 1000);
+                inputField.value = '';
                 return;
             }
 
@@ -82,8 +83,7 @@
                     errorMsg.classList.toggle('hidden');
                 }, 2000);
 
-            inputField.value = '';
-            
+                inputField.value = '';
         });
     </script>
 </body>
