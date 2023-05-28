@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <title>Qwerty</title>
+</head>
+<style>
+    .form-container {
+        margin: 100px auto;
+        text-align: center;
+    }
+</style>
+<body>
+    <form class="form-container" action="">
+        <div>Проверка пароля на надежность</div>
+        <input class="password" type="password" name="visiblePassword">
+        <input class="checkbox" type="checkbox"> Показать пароль
+        <div class="status">Cлабый пароль</div>
+    </form>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.querySelector('.password');
+            const checkbox = document.querySelector('.checkbox');
+            const statusText = document.querySelector('.status');
+
+            checkbox.addEventListener('input', function(event) {
+                event.target.checked ? passwordInput.type = 'text' : passwordInput.type = 'password';
+            });
+
+            passwordInput.addEventListener('input', function(event) {
+                let password = event.target.value;
+
+                if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&-+=()!?"])[a-zA-Z0-9@#$%^&-+=()!?"]{8,128}$/)) {
+                    statusText.style.color = 'green';
+                    statusText.textContent = 'Очень надежный пароль';
+                    return;
+                }
+                
+                if (password.length < 8) {
+                    statusText.style.color = 'red';
+                    statusText.textContent = 'Слишком короткий пароль';
+                    return;
+                }
+
+                if (password.match(/\s/)) {
+                    statusText.style.color = 'red';
+                    statusText.textContent = 'В пароле недопустимый символ - пробел';
+                    return;
+                }
+
+                if (password.match(/[а-яА-ЯёЁ]/)) {
+                    statusText.style.color = 'red';
+                    statusText.textContent = 'В пароле используется кириллица';
+                    return;
+                }
+
+                if (password.match(/(^[0-9]+$)|(^[a-z]+$)|(^[A-Z]+$)/)) {
+                    statusText.style.color = 'blue';
+                    statusText.textContent = 'Простой пароль';
+                    return;
+                }
+
+                if (password.match(/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{8,}$|^(?=.*[a-z])(?=.*\d)[a-z0-9]{8,}$|^(?=.*[A-Z])(?=.*\d)[AZ0-9]{8,}$/)) {
+                    statusText.style.color = 'blue';
+                    statusText.textContent = 'Хороший пароль';
+
+                    if (password.length > 23) {
+                        statusText.textContent = 'Очень надежный пароль';
+                    }
+                    
+                    return;
+                }
+
+                if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/)) {
+                    statusText.style.color = 'green';
+                    statusText.textContent = 'Надежный пароль';
+
+                    if (password.length > 23) {
+                        statusText.textContent = 'Очень надежный пароль';
+                    }
+
+                    return;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
