@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,21 @@
         margin: 100px auto;
         text-align: center;
     }
+
+    .small-password,
+    .error {
+        color: #f00;
+    }
+
+    .simple-good-password {
+        color: #00f;
+    }
+
+    .best-password {
+        color: #0f0;
+    }
 </style>
+
 <body>
     <form class="form-container" action="">
         <div>Проверка пароля на надежность</div>
@@ -22,61 +37,62 @@
     </form>
 
     <script>
-        window.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('DOMContentLoaded', function () {
             const passwordInput = document.querySelector('.password');
             const checkbox = document.querySelector('.checkbox');
             const statusText = document.querySelector('.status');
 
-            checkbox.addEventListener('input', function(event) {
+            checkbox.addEventListener('input', function (event) {
                 event.target.checked ? passwordInput.type = 'text' : passwordInput.type = 'password';
             });
 
-            passwordInput.addEventListener('input', function(event) {
+            passwordInput.addEventListener('input', function (event) {
                 let password = event.target.value;
+                statusText.className = 'status';
 
-                if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&-+=()!?"])[a-zA-Z0-9@#$%^&-+=()!?"]{8,128}$/)) {
-                    statusText.style.color = 'green';
+                if (password.match(/^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&-+=({[\]})!?"])[a-zA-Z0-9@#$%^&-+=({[\]})!?"]{14,128}$/)) {
+                    statusText.classList.add('best-password');
                     statusText.textContent = 'Очень надежный пароль';
                     return;
                 }
-                
+
                 if (password.length < 8) {
-                    statusText.style.color = 'red';
+                    statusText.classList.add('small-password');
                     statusText.textContent = 'Слишком короткий пароль';
                     return;
                 }
 
                 if (password.match(/\s/)) {
-                    statusText.style.color = 'red';
+                    statusText.classList.add('error');
                     statusText.textContent = 'В пароле недопустимый символ - пробел';
                     return;
                 }
 
                 if (password.match(/[а-яА-ЯёЁ]/)) {
-                    statusText.style.color = 'red';
+                    statusText.classList.add('error');
                     statusText.textContent = 'В пароле используется кириллица';
                     return;
                 }
 
                 if (password.match(/(^[0-9]+$)|(^[a-z]+$)|(^[A-Z]+$)/)) {
-                    statusText.style.color = 'blue';
+                    statusText.classList.add('simple-good-password');
                     statusText.textContent = 'Простой пароль';
                     return;
                 }
 
                 if (password.match(/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{8,}$|^(?=.*[a-z])(?=.*\d)[a-z0-9]{8,}$|^(?=.*[A-Z])(?=.*\d)[AZ0-9]{8,}$/)) {
-                    statusText.style.color = 'blue';
+                    statusText.classList.add('simple-good-password');
                     statusText.textContent = 'Хороший пароль';
 
                     if (password.length > 23) {
                         statusText.textContent = 'Очень надежный пароль';
                     }
-                    
+
                     return;
                 }
 
                 if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/)) {
-                    statusText.style.color = 'green';
+                    statusText.classList.add('best-password');
                     statusText.textContent = 'Надежный пароль';
 
                     if (password.length > 23) {
@@ -89,4 +105,5 @@
         });
     </script>
 </body>
+
 </html>
