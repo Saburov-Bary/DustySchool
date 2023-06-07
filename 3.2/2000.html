@@ -129,47 +129,43 @@
                 lat = data.coords.latitude;
                 lon = data.coords.longitude;
 
-                setTimeout(function () {
-                    const currentLatInRad = lat * Math.PI / 180;
+                const currentLatInRad = lat * Math.PI / 180;
 
-                    citiesToCompare.forEach(function (element) {
+                citiesToCompare.forEach(function (element) {
 
-                        const latInRad = element.lat * Math.PI / 180;
-                        const deltaLatInRad = (element.lat - lat) * Math.PI / 180;
-                        const deltaLonInRad = (element.lon - lon) * Math.PI / 180;
-                        const a = Math.sin(deltaLatInRad / 2) ** 2 + Math.cos(currentLatInRad) * Math.cos(latInRad) * Math.sin(deltaLonInRad / 2) * Math.sin(deltaLonInRad / 2);
-                        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                        element.distance = Math.round(earthRadius * c);
+                    const latInRad = element.lat * Math.PI / 180;
+                    const deltaLatInRad = (element.lat - lat) * Math.PI / 180;
+                    const deltaLonInRad = (element.lon - lon) * Math.PI / 180;
+                    const a = Math.sin(deltaLatInRad / 2) ** 2 + Math.cos(currentLatInRad) * Math.cos(latInRad) * Math.sin(deltaLonInRad / 2) * Math.sin(deltaLonInRad / 2);
+                    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                    element.distance = Math.round(earthRadius * c);
 
+                });
+
+                citiesToCompare
+
+                    .sort(function (firstCity, secondCity) {
+
+                        if (firstCity.distance > secondCity.distance) {
+                            return 1;
+                        }
+
+                        if (firstCity.distance < secondCity.distance) {
+                            return -1;
+                        }
+
+                        return 0;
+                    })
+
+                    .forEach(function (element, index) {
+                        let distance = distanceList[index];
+                        citiesList[index].textContent = element.city;
+                        distance.textContent = element.distance + 'km';
+                        distance.style.width = element.distance / citiesToCompare[citiesToCompare.length - 1].distance * 100 + '%';
+                        distance.style.background = element.color;
+                        currentLocationText.classList.remove('hidden');
+                        resultsArea.classList.remove('hidden');
                     });
-
-                    citiesToCompare
-
-                        .sort(function (firstCity, secondCity) {
-
-                            if (firstCity.distance > secondCity.distance) {
-                                return 1;
-                            }
-
-                            if (firstCity.distance < secondCity.distance) {
-                                return -1;
-                            }
-
-                            return 0;
-                        })
-
-                        .forEach(function (element, index) {
-                            let distance = distanceList[index];
-                            citiesList[index].textContent = element.city;
-                            distance.textContent = element.distance + 'km';
-                            distance.style.width = element.distance / citiesToCompare[citiesToCompare.length - 1].distance * 100 + '%';
-                            distance.style.background = element.color;
-                            currentLocationText.classList.remove('hidden');
-                            resultsArea.classList.remove('hidden');
-                        });
-
-                }, 500);
-
             }, function (error) {
                 alert('Вы запретили браузеру доступ к геолокации. Предоставьте доступ и попробуйте снова');
             });
