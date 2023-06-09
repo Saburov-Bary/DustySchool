@@ -34,74 +34,76 @@
         <input class="password" type="password" name="visiblePassword">
         <input class="checkbox" type="checkbox"> Показать пароль
         <div class="status">Cлабый пароль</div>
+        <div class="length"></div>
+        <div class="hint hidden error">Используйте латинские буквы a-Z, цифры 0-9 и символы @#$%^&-+=;:({[\]})!?"</div>
+
     </form>
 
     <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            const passwordInput = document.querySelector('.password');
-            const checkbox = document.querySelector('.checkbox');
-            const statusText = document.querySelector('.status');
+        const passwordInput = document.querySelector('.password');
+        const checkbox = document.querySelector('.checkbox');
+        const statusText = document.querySelector('.status');
+        const hintText = document.querySelector('.hint');
+        const length = document.querySelector('.length');
 
-            checkbox.addEventListener('input', function (event) {
-                event.target.checked ? passwordInput.type = 'text' : passwordInput.type = 'password';
+        checkbox.addEventListener('input', function (event) {
+            event.target.checked ? passwordInput.type = 'text' : passwordInput.type = 'password';
+        });
+
+        passwordInput.addEventListener('input', function (event) {
+            let password = event.target.value;
+            statusText.className = 'status';
+            length.textContent = password.length;
+
+            const absenceCheck = Array.from(password).some(element => {
+                return !element.match(/[a-zA-Z0-9@#$%^&-+=;:({[\]})!?"]/);
             });
 
-            passwordInput.addEventListener('input', function (event) {
-                let password = event.target.value;
-                statusText.className = 'status';
+            if (absenceCheck) {
+                hintText.classList.remove('hidden');
+            } else {
+                hintText.classList.add('hidden');
+            }
 
-                if (password.match(/^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&-+=({[\]})!?"])[a-zA-Z0-9@#$%^&-+=({[\]})!?"]{14,128}$/)) {
-                    statusText.classList.add('best-password');
-                    statusText.textContent = 'Очень надежный пароль';
-                    return;
+            if (password.match(/^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&-+=;:({[\]})!?"])[a-zA-Z0-9@#$%^&-+=;:({[\]})!?"]{14,}$/)) {
+                statusText.classList.add('best-password');
+                statusText.textContent = 'password has a-Z, 0-9 and special characters @#$%^&-+=;:({[\]})!?" and has length more than 14 characters';
+                return;
+            }
+
+            if (password.length < 8) {
+                statusText.classList.add('small-password');
+                statusText.textContent = 'password less than 8 characters';
+                return;
+            }
+
+            if (password.match(/(^[0-9]+$)|(^[a-z]+$)|(^[A-Z]+$)/)) {
+                statusText.classList.add('simple-good-password');
+                statusText.textContent = 'password has only 0-9 or a-z or A-Z characters';
+                return;
+            }
+
+            if (password.match(/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{8,}$|^(?=.*[a-z])(?=.*\d)[a-z0-9]{8,}$|^(?=.*[A-Z])(?=.*\d)[AZ0-9]{8,}$/)) {
+                statusText.classList.add('simple-good-password');
+                statusText.textContent = 'Pasword has (a-Z) or (a-z0-9) or (A-Z0-9) and length between 8-22 caracters';
+
+                if (password.length > 23) {
+                    statusText.textContent = 'Pasword has (a-Z) or (a-z0-9) or (A-Z0-9) and length more than 22 caracters';
                 }
 
-                if (password.length < 8) {
-                    statusText.classList.add('small-password');
-                    statusText.textContent = 'Слишком короткий пароль';
-                    return;
+                return;
+            }
+
+            if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/)) {
+                statusText.classList.add('best-password');
+                statusText.textContent = 'Password has all type of this a-zA-Z0-9 and length between 8-22 caracters';
+
+                if (password.length > 23) {
+                    statusText.textContent = 'Password has all type of this a-zA-Z0-9 and length more than 23 characters';
                 }
 
-                if (password.match(/\s/)) {
-                    statusText.classList.add('error');
-                    statusText.textContent = 'В пароле недопустимый символ - пробел';
-                    return;
-                }
-
-                if (password.match(/[а-яА-ЯёЁ]/)) {
-                    statusText.classList.add('error');
-                    statusText.textContent = 'В пароле используется кириллица';
-                    return;
-                }
-
-                if (password.match(/(^[0-9]+$)|(^[a-z]+$)|(^[A-Z]+$)/)) {
-                    statusText.classList.add('simple-good-password');
-                    statusText.textContent = 'Простой пароль';
-                    return;
-                }
-
-                if (password.match(/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{8,}$|^(?=.*[a-z])(?=.*\d)[a-z0-9]{8,}$|^(?=.*[A-Z])(?=.*\d)[AZ0-9]{8,}$/)) {
-                    statusText.classList.add('simple-good-password');
-                    statusText.textContent = 'Хороший пароль';
-
-                    if (password.length > 23) {
-                        statusText.textContent = 'Очень надежный пароль';
-                    }
-
-                    return;
-                }
-
-                if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/)) {
-                    statusText.classList.add('best-password');
-                    statusText.textContent = 'Надежный пароль';
-
-                    if (password.length > 23) {
-                        statusText.textContent = 'Очень надежный пароль';
-                    }
-
-                    return;
-                }
-            });
+                return;
+            }
         });
     </script>
 </body>
