@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <title>Отправь смс</title>
+    <style>
+        .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            width: 310px;
+        }
+
+        .phone-buttons {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            background-color: #dddddd;
+            box-sizing: border-box;
+        }
+
+        .buttons-text {
+            text-align: center;
+            line-height: 50px;
+            margin: 0;
+        }
+
+        .buttons-number {
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body class="page">
+    <script>
+        const page = document.querySelector('.page');
+
+        const phoneButtons = {};
+        const buttonsNumber = {};
+        const buttonsText = {};
+
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('wrapper');
+
+        page.appendChild(wrapper);
+
+        phoneButtons.buttonOne = document.createElement('div');
+        phoneButtons.buttonOne.classList.add('phone-buttons', 'button-one');
+
+        phoneButtons.buttonTwo = document.createElement('div');
+        phoneButtons.buttonTwo.classList.add('phone-buttons', 'button-two');
+
+        phoneButtons.buttonThree = document.createElement('div');
+        phoneButtons.buttonThree.classList.add('phone-buttons', 'button-three');
+
+        phoneButtons.buttonFour = document.createElement('div');
+        phoneButtons.buttonFour.classList.add('phone-buttons', 'button-four');
+
+        phoneButtons.buttonFive = document.createElement('div');
+        phoneButtons.buttonFive.classList.add('phone-buttons', 'button-five');
+
+        phoneButtons.buttonSix = document.createElement('div');
+        phoneButtons.buttonSix.classList.add('phone-buttons', 'button-six');
+
+        phoneButtons.buttonSeven = document.createElement('div');
+        phoneButtons.buttonSeven.classList.add('phone-buttons', 'button-seven');
+
+        phoneButtons.buttonEight = document.createElement('div');
+        phoneButtons.buttonEight.classList.add('phone-buttons', 'button-eight');
+
+        phoneButtons.buttonNine = document.createElement('div');
+        phoneButtons.buttonNine.classList.add('phone-buttons', 'button-nine');
+
+        buttonsNumber.buttonNumberOne = document.createElement('p');
+        buttonsNumber.buttonNumberOne.classList.add('buttons-text', 'number-one', 'buttons-number');
+        buttonsNumber.buttonNumberOne.textContent = '1';
+
+        buttonsNumber.buttonNumberTwo = document.createElement('p');
+        buttonsNumber.buttonNumberTwo.classList.add('buttons-text', 'number-two', 'buttons-number');
+        buttonsNumber.buttonNumberTwo.textContent = '2';
+
+        buttonsNumber.buttonNumberThree = document.createElement('p');
+        buttonsNumber.buttonNumberThree.classList.add('buttons-text', 'number-three', 'buttons-number');
+        buttonsNumber.buttonNumberThree.textContent = '3';
+
+        buttonsNumber.buttonNumberFour = document.createElement('p');
+        buttonsNumber.buttonNumberFour.classList.add('buttons-text', 'number-four', 'buttons-number');
+        buttonsNumber.buttonNumberFour.textContent = '4';
+
+        buttonsNumber.buttonNumberFive = document.createElement('p');
+        buttonsNumber.buttonNumberFive.classList.add('buttons-text', 'number-five', 'buttons-number');
+        buttonsNumber.buttonNumberFive.textContent = '5';
+
+        buttonsNumber.buttonNumberSix = document.createElement('p');
+        buttonsNumber.buttonNumberSix.classList.add('buttons-text', 'number-six', 'buttons-number');
+        buttonsNumber.buttonNumberSix.textContent = '6';
+
+        buttonsNumber.buttonNumberSeven = document.createElement('p');
+        buttonsNumber.buttonNumberSeven.classList.add('buttons-text', 'number-seven', 'buttons-number');
+        buttonsNumber.buttonNumberSeven.textContent = '7';
+
+        buttonsNumber.buttonNumberEight = document.createElement('p');
+        buttonsNumber.buttonNumberEight.classList.add('buttons-text', 'number-eight', 'buttons-number');
+        buttonsNumber.buttonNumberEight.textContent = '8';
+
+        buttonsNumber.buttonNumberNine = document.createElement('p');
+        buttonsNumber.buttonNumberNine.classList.add('buttons-text', 'number-nine', 'buttons-number');
+        buttonsNumber.buttonNumberNine.textContent = '9';
+
+        buttonsText.buttonTextOne = document.createElement('p');
+        buttonsText.buttonTextOne.classList.add('buttons-text', 'text-one');
+        buttonsText.buttonTextOne.textContent = 'o_o';
+
+        buttonsText.buttonTextTwo = document.createElement('p');
+        buttonsText.buttonTextTwo.classList.add('buttons-text', 'text-two');
+        buttonsText.buttonTextTwo.textContent = 'АБВГ';
+
+        buttonsText.buttonTextThree = document.createElement('p');
+        buttonsText.buttonTextThree.classList.add('buttons-text', 'text-three');
+        buttonsText.buttonTextThree.textContent = 'ДЕЁЖЗ';
+
+        buttonsText.buttonTextFour = document.createElement('p');
+        buttonsText.buttonTextFour.classList.add('buttons-text', 'text-four');
+        buttonsText.buttonTextFour.textContent = 'ИЙКЛ';
+
+        buttonsText.buttonTextFive = document.createElement('p');
+        buttonsText.buttonTextFive.classList.add('buttons-text', 'text-five');
+        buttonsText.buttonTextFive.textContent = 'МНОП';
+
+        buttonsText.buttonTextSix = document.createElement('p');
+        buttonsText.buttonTextSix.classList.add('buttons-text', 'text-six');
+        buttonsText.buttonTextSix.textContent = 'РСТУ';
+
+        buttonsText.buttonTextSeven = document.createElement('p');
+        buttonsText.buttonTextSeven.classList.add('buttons-text', 'text-seven');
+        buttonsText.buttonTextSeven.textContent = 'ФХЦЧ';
+
+        buttonsText.buttonTextEight = document.createElement('p');
+        buttonsText.buttonTextEight.classList.add('buttons-text', 'text-eight');
+        buttonsText.buttonTextEight.textContent = 'ШЩЪЫ';
+
+        buttonsText.buttonTextNine = document.createElement('p');
+        buttonsText.buttonTextNine.classList.add('buttons-text', 'text-nine');
+        buttonsText.buttonTextNine.textContent = 'ЬЭЮЯ';
+
+        let buttonsCount = 0;
+        intervalTime = 50;
+        const phoneButtonsEntries = Object.entries(phoneButtons);
+        const buttonsNumberEntries = Object.entries(buttonsNumber);
+        const buttonsTextEntries = Object.entries(buttonsText);
+
+        for (const phoneButton of phoneButtonsEntries) {
+            setTimeout(() => {
+                wrapper.appendChild(phoneButton[1]);
+                phoneButton[1].appendChild(buttonsNumberEntries[buttonsCount][1]);
+                phoneButton[1].appendChild(buttonsTextEntries[buttonsCount][1]);
+                buttonsCount++;
+            }, intervalTime);
+
+            intervalTime += 50;
+        }
+
+    </script>
+</body>
+
+</html>
