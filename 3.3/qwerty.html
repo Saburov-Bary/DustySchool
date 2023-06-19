@@ -23,6 +23,10 @@
         color: #00f;
     }
 
+    .good-password {
+        color: #ff0;
+    }
+
     .best-password {
         color: #0f0;
     }
@@ -67,44 +71,35 @@
 
             if (password.match(/^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&-+=;:({[\]})!?"])[a-zA-Z0-9@#$%^&-+=;:({[\]})!?"]{14,}$/)) {
                 statusText.classList.add('best-password');
-                statusText.textContent = 'password has a-Z, 0-9 and special characters @#$%^&-+=;:({[\]})!?" and has length more than 14 characters';
+                statusText.textContent = 'Очень надежный пароль содержит все возможные сиволы a-Z, 0-9 и @#$%^&-+=;:({[\]})!?" и длиной больше 13 символов';
                 return;
             }
 
-            if (password.length < 8) {
+            if (password.length < 14) {
                 statusText.classList.add('small-password');
-                statusText.textContent = 'password less than 8 characters';
+                statusText.textContent = 'Простой пароль, содержит меньше 14 символов';
                 return;
             }
 
-            if (password.match(/(^[0-9]+$)|(^[a-z]+$)|(^[A-Z]+$)/)) {
+            if (password.match(/(^[0-9]+$)|(^[a-z]+$)|(^[A-Z]+$)|(?=.*[@#$%^&-+=;:({[\]})!?"]){14,}/)) {
                 statusText.classList.add('simple-good-password');
-                statusText.textContent = 'password has only 0-9 or a-z or A-Z characters';
+                statusText.textContent = 'Простой пароль, содержит только один тип символов: 0-9 или a-z или A-Z, и больше 13 сиволов';
                 return;
             }
 
-            if (password.match(/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{8,}$|^(?=.*[a-z])(?=.*\d)[a-z0-9]{8,}$|^(?=.*[A-Z])(?=.*\d)[AZ0-9]{8,}$/)) {
+            if (password.match(/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{14,}$|^(?=.*[a-z])(?=.*\d)[a-z0-9]{14,}$|^(?=.*[A-Z])(?=.*\d)[A-Z0-9]{14,}$|^(?=.*[a-z])(?=.*[@#$%^&-+=;:({[\]})!?"])[a-z@#$%^&-+=;:({[\]})!?"]{14,}$|^(?=.*[A-Z])(?=.*[@#$%^&-+=;:({[\]})!?"])[A-Z@#$%^&-+=;:({[\]})!?"]{14,}$|^(?=.*[0-9])(?=.*[@#$%^&-+=;:({[\]})!?"])[0-9@#$%^&-+=;:({[\]})!?"]{14,}$/)) {
                 statusText.classList.add('simple-good-password');
-                statusText.textContent = 'Pasword has (a-Z) or (a-z0-9) or (A-Z0-9) and length between 8-22 caracters';
-
-                if (password.length > 23) {
-                    statusText.textContent = 'Pasword has (a-Z) or (a-z0-9) or (A-Z0-9) and length more than 22 caracters';
-                }
-
+                statusText.textContent = 'Хороший пароль, содержит следующие комбинации символов (a-Z); (a-z0-9); (A-Z0-9); (a-z@#$%^&-+=;:({[\]})!?"); (A-Z@#$%^&-+=;:({[\]})!?") или (0-9@#$%^&-+=;:({[\]})!?") и длинной больше 13 символов';
                 return;
             }
 
-            if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{8,}$/)) {
-                statusText.classList.add('best-password');
-                statusText.textContent = 'Password has all type of this a-zA-Z0-9 and length between 8-22 caracters';
-
-                if (password.length > 23) {
-                    statusText.textContent = 'Password has all type of this a-zA-Z0-9 and length more than 23 characters';
-                }
-
+            if (password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{14,}$/)) {
+                statusText.classList.add('good-password');
+                statusText.textContent = 'Надежный пароль, содержит все типы символов a-zA-Z0-9 и длинной больше 13 символов';
                 return;
             }
         });
     </script>
 </body>
+
 </html>
