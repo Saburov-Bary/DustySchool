@@ -77,7 +77,7 @@
         const smsTextArea = document.createElement('textarea');
         const smsTextAreaLength = document.createElement('div');
         smsTextArea.disabled = true;
-        
+
         wrapper.classList.add('wrapper');
         textAreaWrapper.classList.add('text-area-wrapper');
         smsTextArea.classList.add('sms-text-area');
@@ -87,27 +87,37 @@
         wrapper.appendChild(textAreaWrapper);
         textAreaWrapper.appendChild(smsTextArea);
         textAreaWrapper.appendChild(smsTextAreaLength);
-        
-        const textAreaValueListening = function() {
+
+        const textAreaValueListening = function () {
             if (smsTextArea) {
                 smsTextAreaLength.textContent = smsTextArea.value.length;
             }
         }
 
-        for (let i = 0; i < 12; i++) {
+        const addClasses = function () {
+            arguments[0].classList.add('phone-buttons');
+            arguments[1].classList.add('buttons-number');
+            arguments[2].classList.add('buttons-text');
+        }
+
+        const addTextContents = function (index) {
+            arguments[1].textContent = phoneButtons.buttonsTextNumbers[index];
+            arguments[2].textContent = phoneButtons.buttonsTextSymbols[index];
+        }
+
+        const addDataSets = function (index) {
+            arguments[1].dataset.buttonPosition = phoneButtons.buttonNumbers[index];
+            arguments[1].dataset.buttonText = phoneButtons.buttonsTextNumbers[index] + phoneButtons.buttonsTextSymbols[index];
+        }
+
+        for (let i = 0; i < phoneButtons.buttonNumbers.length; i++) {
             const button = document.createElement('div');
             const buttonNumber = document.createElement('p');
             const buttonText = document.createElement('p');
-            
-            button.classList.add('phone-buttons');
-            buttonNumber.classList.add('buttons-number');
-            buttonText.classList.add('buttons-text');
 
-            buttonNumber.textContent = phoneButtons.buttonsTextNumbers[i];
-            buttonText.textContent = phoneButtons.buttonsTextSymbols[i];
-
-            button.dataset.buttonPosition = phoneButtons.buttonNumbers[i];
-            button.dataset.buttonText = phoneButtons.buttonsTextNumbers[i] + phoneButtons.buttonsTextSymbols[i];
+            addClasses(button, buttonNumber, buttonText);
+            addTextContents(i, buttonNumber, buttonText);
+            addDataSets(i, button);
 
             wrapper.appendChild(button);
             button.appendChild(buttonNumber);
@@ -123,27 +133,30 @@
         let counter = 0;
 
         for (const button of buttons) {
-            button.addEventListener('click', function({ currentTarget }) {
-                currentButtonIndex = currentTarget.dataset.buttonPosition;
-                currentButtonText = currentTarget.dataset.buttonPosition;
-                clickTimerStart = window.performance.now();
-                currentSmsTextArea = smsTextArea.value;
-
-                smsTextArea.value += currentTarget.dataset.buttonText[0];
-
-                if (currentButtonIndex === previousButtonIndex && clickTimerStart - clickTimerEnd < 1500) {
-                    counter === currentTarget.dataset.buttonText.length - 1 ? counter = 0 : counter += 1;
-                    smsTextArea.value = currentSmsTextArea.slice(0, -1) + currentTarget.dataset.buttonText[counter];
-                } else {
-                    counter = 0;
-                }
-
-                textAreaValueListening();
-                previousButtonIndex = currentTarget.dataset.buttonPosition;
-                clickTimerEnd = window.performance.now();
+            button.addEventListener('click', function ({ currentTarget }) {
+                inputCharacters(currentTarget);
             });
         }
 
+        const inputCharacters = function (targetedButton) {
+            currentButtonIndex = targetedButton.dataset.buttonPosition;
+            currentButtonText = targetedButton.dataset.buttonPosition;
+            clickTimerStart = window.performance.now();
+            currentSmsTextArea = smsTextArea.value;
+
+            smsTextArea.value += targetedButton.dataset.buttonText[0];
+
+            if (currentButtonIndex === previousButtonIndex && clickTimerStart - clickTimerEnd < 1500) {
+                counter === targetedButton.dataset.buttonText.length - 1 ? counter = 0 : counter += 1;
+                smsTextArea.value = currentSmsTextArea.slice(0, -1) + targetedButton.dataset.buttonText[counter];
+            } else {
+                counter = 0;
+            }
+
+            textAreaValueListening();
+            previousButtonIndex = targetedButton.dataset.buttonPosition;
+            clickTimerEnd = window.performance.now();
+        }
     </script>
 </body>
 
