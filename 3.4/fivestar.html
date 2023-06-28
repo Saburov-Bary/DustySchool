@@ -11,9 +11,6 @@
         .stars-wrapper {
             margin-top: 100px;
             text-align: center;
-        }
-
-        .fa-star {
             cursor: pointer;
         }
     </style>
@@ -32,14 +29,14 @@
 
         const mouseOverStars = function({ target }) {
             const starPosition = starsArray.indexOf(target);
-            for (let i = 0; i != starPosition + 1; i++) {
+            for (let i = 0; !(i > starPosition); i++) {
                 starsArray[i].classList.add('fa-solid')
             }
         }
 
         const mouseOutStars = function({ target }) {
             const starPosition = starsArray.indexOf(target);
-            for (let i = 0; i != starPosition + 1; i++) {
+            for (let i = 0; !(i > starPosition); i++) {
                 starsArray[i].classList.remove('fa-solid')
             }
         }
