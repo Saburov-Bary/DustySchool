@@ -34,6 +34,7 @@
 <body class="page">
     <script>
         const page = document.querySelector('.page');
+        const imageWrapper = document.createElement('div');
         const imageFirst = document.createElement('img');
         const imageSecond = document.createElement('img');
         const imageThird = document.createElement('img');
@@ -46,17 +47,29 @@
         imageSecond.classList.add('image-small');
         imageThird.classList.add('image-small');
         
-        page.appendChild(imageFirst);
-        page.appendChild(imageSecond);
-        page.appendChild(imageThird);
+        page.appendChild(imageWrapper);
+        imageWrapper.appendChild(imageFirst);
+        imageWrapper.appendChild(imageSecond);
+        imageWrapper.appendChild(imageThird);
 
-        const images = document.querySelectorAll('.image-small');
+        const emojiesArray = Array.from(imageWrapper.children);
 
-        for (const image of images) {
-            image.addEventListener('click', function({ target }) {
+        imageWrapper.addEventListener('click', function({ target }) {
+            if (target.classList.contains('image-big')) {
                 target.classList.toggle('image-big');
-            })
-        }
+                return;
+            }
+
+            for (const child of emojiesArray) {
+                if (child.classList.contains('image-big')) {
+                    child.classList.toggle('image-big');
+                }
+            }
+
+            if (target.classList.contains('image-small')) {
+                target.classList.toggle('image-big');
+            }
+        });
     </script>
 </body>
 </html>

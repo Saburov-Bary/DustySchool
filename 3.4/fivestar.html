@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,38 +16,38 @@
         }
     </style>
 </head>
+
 <body class="page">
     <div class="stars-wrapper">
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
     </div>
     <script>
-        const stars = document.querySelector('.stars-wrapper');
-        const starsArray = Array.from(stars.children);
+        window.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelector('.stars-wrapper');
+            const starsArray = Array.from(stars.children);
 
-        const mouseOverStars = function({ target }) {
-            const starPosition = starsArray.indexOf(target);
-            for (let i = 0; !(i > starPosition); i++) {
-                starsArray[i].classList.add('fa-solid')
+            const mouseOverStars = function ({ target }) {
+                const starPosition = starsArray.indexOf(target);
+                for (let i = 0; !(i > starPosition); i++) {
+                    starsArray[i].classList.add('fa-solid')
+                }
             }
-        }
 
-        const mouseOutStars = function({ target }) {
-            const starPosition = starsArray.indexOf(target);
-            for (let i = 0; !(i > starPosition); i++) {
-                starsArray[i].classList.remove('fa-solid')
+            const mouseOutStars = function ({ target }) {
+                const starPosition = starsArray.indexOf(target);
+                for (let i = 0; !(i > starPosition); i++) {
+                    starsArray[i].classList.remove('fa-solid')
+                }
             }
-        }
 
-        stars.addEventListener('mouseover', mouseOverStars);
-        stars.addEventListener('mouseout', mouseOutStars);
-        stars.addEventListener('click', function({ currentTarget }) {
-            currentTarget.removeEventListener('mouseout', mouseOutStars);
-            currentTarget.removeEventListener('mouseover', mouseOverStars);
-        });        
+            stars.addEventListener('mouseover', mouseOverStars);
+            stars.addEventListener('mouseout', mouseOutStars);
+            stars.addEventListener('click', function ({ currentTarget }) {
+                currentTarget.removeEventListener('mouseout', mouseOutStars);
+                currentTarget.removeEventListener('mouseover', mouseOverStars);
+            });  
+        });      
     </script>
 </body>
+
 </html>

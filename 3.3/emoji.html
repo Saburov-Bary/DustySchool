@@ -23,7 +23,7 @@
     <script>
         const emojis = ['😎', '👍', '💔', '🔔', '🔞'];
         const page = document.querySelector('.page');
-        
+
         function showMeEmojis() {
             const screenDimensions = [document.documentElement.clientWidth, document.documentElement.clientHeight];
             
@@ -42,28 +42,24 @@
 
         showMeEmojis();
 
-        const emojiButtons = page.querySelectorAll('.emoji');
         let previousEmoji = [];
         let counter = 0;
 
-        for (const emojiElement of emojiButtons) {
-            emojiElement.addEventListener('mouseover', function ({ target }) {
-                if (target.dataset.emojiNumber === previousEmoji[0] && target !== previousEmoji[1]) {
-                    target.classList.add('hidden');
-                    previousEmoji[1].classList.add('hidden');
-                    previousEmoji = [];
-                    counter += 1;
-                    if (counter === emojis.length) {
-                        counter = 0;
-                        location.reload();
-                    }
-                } else {
-                    previousEmoji[0] = target.dataset.emojiNumber;
-                    previousEmoji[1] = target;
+        page.addEventListener('mouseover', function ({ target }) {
+            if (target.dataset.emojiNumber === previousEmoji[0] && target !== previousEmoji[1]) {
+                target.classList.add('hidden');
+                previousEmoji[1].classList.add('hidden');
+                previousEmoji = [];
+                counter += 1;
+                if (counter === emojis.length) {
+                    counter = 0;
+                    location.reload();
                 }
-            })
-        }
-
+            } else {
+                previousEmoji[0] = target.dataset.emojiNumber;
+                previousEmoji[1] = target;
+            }
+        })
 
     </script>
 </body>
