@@ -4,34 +4,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"> -->
     <title>Инпутный клининг</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
-<body>
-    <h1>Этот заголовок можно заменить</h1>
-    <p>И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
-    <p>И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
-    <h2>Этот заголовок можно заменить</h2>
-    <p>И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
-    <p>И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
+<body class="page">
+    <h1 class="editable">Этот заголовок можно заменить</h1>
+    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
+    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
+    <h2 class="editable">Этот заголовок можно заменить</h2>
+    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
+    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
     <h3>А этот нельзя менять!</h3>
     <ul>
-        <li>
+        <li class="editable">
             кликните по тексту и замените его
         </li>
-        <li>
+        <li class="editable">
             кликните по тексту и замените его
         </li>
-        <li>
+        <li class="editable">
             кликните по тексту и замените его
         </li>
-        <li>
+        <li class="editable">
             кликните по тексту и замените его
         </li>
-        <li>
+        <li class="editable">
             кликните по тексту и замените его
-        </li>
+        </li class="editable">
     </ul>
-    <p>И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
+    <p>Кликай, не кликай, а текст все равно не поменяешь!</p>
+
+    <script>
+        const page = document.querySelector('.page');
+        // const editableElementsArray = Array.from(page.querySelectorall('.editable'));
+        const editorWrapper = document.createElement('div');
+        const textEditorArea = document.createElement('textarea');
+        const applyButton = document.createElement('button');
+        const cancelButton = document.createElement('button');
+        const clearButton = document.createElement('button');
+
+        editorWrapper.classList.add('editor-wrapper');
+        textEditorArea.classList.add('text-editor-area');
+        applyButton.classList.add('apply-button');
+        cancelButton.classList.add('cancel-button');
+        clearButton.classList.add('clear-button');
+
+        applyButton.textContent = 'Apply';
+        cancelButton.textContent = 'Cancel';
+        clearButton.textContent = 'Clear';
+
+        let originalText;
+
+        function elementEditor(event) {
+
+            page.removeEventListener('click', elementEditor);
+            
+            const editingElement = event.target;
+
+            if (!editingElement.classList.contains('editable')) {
+                return;
+            }
+
+            originalText = editingElement.textContent;
+            textEditorArea.value = originalText;
+            editingElement.textContent = '';
+            editingElement.appendChild(editorWrapper);
+            editorWrapper.appendChild(textEditorArea);
+            editorWrapper.appendChild(applyButton);
+            editorWrapper.appendChild(cancelButton);
+            editorWrapper.appendChild(clearButton);
+        }
+
+        page.addEventListener('click', elementEditor);
+
+        function applyChanges({ target }) {
+            editingElement = target.closest('.editable');
+            editingElement.textContent = textEditorArea.value;
+            page.addEventListener('click', elementEditor);
+        }
+
+        applyButton.addEventListener('click', applyChanges);
+
+
+    </script>
 </body>
 </html>
