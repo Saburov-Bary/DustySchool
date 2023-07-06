@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     <title>Инпутный клининг</title>
     <style>
         .hidden {
             display: none;
         }
+
+        .text-editor-area {
+            width: 100%;
+        }
     </style>
 </head>
+
 <body class="page">
     <h1 class="editable">Этот заголовок можно заменить</h1>
-    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
-    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
+    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по
+        тексту и замените его!</p>
+    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по
+        тексту и замените его!</p>
     <h2 class="editable">Этот заголовок можно заменить</h2>
-    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
-    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по тексту и замените его!</p>
+    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по
+        тексту и замените его!</p>
+    <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по
+        тексту и замените его!</p>
     <h3>А этот нельзя менять!</h3>
     <ul>
         <li class="editable">
@@ -41,7 +51,6 @@
 
     <script>
         const page = document.querySelector('.page');
-        // const editableElementsArray = Array.from(page.querySelectorall('.editable'));
         const editorWrapper = document.createElement('div');
         const textEditorArea = document.createElement('textarea');
         const applyButton = document.createElement('button');
@@ -61,36 +70,46 @@
         let originalText;
 
         function elementEditor(event) {
+            if (event.target.classList.contains('editable')) {
 
-            page.removeEventListener('click', elementEditor);
-            
-            const editingElement = event.target;
+                page.removeEventListener('click', elementEditor);
 
-            if (!editingElement.classList.contains('editable')) {
-                return;
+                const editingElement = event.target;
+
+                if (!editingElement.classList.contains('editable')) {
+                    return;
+                }
+
+                originalText = editingElement.textContent;
+                textEditorArea.value = originalText;
+                editingElement.textContent = '';
+                editingElement.appendChild(editorWrapper);
+                editorWrapper.appendChild(textEditorArea);
+                editorWrapper.appendChild(applyButton);
+                editorWrapper.appendChild(cancelButton);
+                editorWrapper.appendChild(clearButton);
             }
-
-            originalText = editingElement.textContent;
-            textEditorArea.value = originalText;
-            editingElement.textContent = '';
-            editingElement.appendChild(editorWrapper);
-            editorWrapper.appendChild(textEditorArea);
-            editorWrapper.appendChild(applyButton);
-            editorWrapper.appendChild(cancelButton);
-            editorWrapper.appendChild(clearButton);
         }
 
         page.addEventListener('click', elementEditor);
 
-        function applyChanges({ target }) {
+        applyButton.addEventListener('click', function ({ target }) {
             editingElement = target.closest('.editable');
             editingElement.textContent = textEditorArea.value;
             page.addEventListener('click', elementEditor);
-        }
+        });
 
-        applyButton.addEventListener('click', applyChanges);
+        cancelButton.addEventListener('click', function ({ target }) {
+            editingElement = target.closest('.editable');
+            editingElement.textContent = originalText;
+            page.addEventListener('click', elementEditor);
+        });
 
-
+        clearButton.addEventListener('click', function () {
+            textEditorArea.value = '';
+            page.addEventListener('click', elementEditor);
+        });
     </script>
 </body>
+
 </html>
