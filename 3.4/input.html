@@ -30,6 +30,11 @@
     <p class="editable">И тут может быть куча текста. Больше чем сейчас написано. Но если он вам не нужен, кликните по
         тексту и замените его!</p>
     <h3>А этот нельзя менять!</h3>
+    <div>
+        <p class="editable">i can edit this text too</p>
+        <p>and this one cant</p>
+        <p>and <span class="editable"> this one can</span> again</p>
+    </div>
     <ul>
         <li class="editable">
             кликните по тексту и замените его
@@ -67,12 +72,31 @@
         cancelButton.textContent = 'Cancel';
         clearButton.textContent = 'Clear';
 
+        const editableElements = document.querySelectorAll('.editable');
+
         let originalText;
 
-        function elementEditor(event) {
+        function addEventListenerToCollection (array) {
+            const elementsArray = Array.from(array);
+            console.log(elementsArray);
+
+            for (let i = 0; i < elementsArray.length; i++) {
+                elementsArray[i].addEventListener('click', elementEditorHandler)
+            }
+        }
+
+        function removeEventListenerFromCollection (array) {
+            const elementsArray = Array.from(array);
+
+            for (let i = 0; i < elementsArray.length; i++) {
+                elementsArray[i].removeEventListener('click', elementEditorHandler)
+            }
+        }
+
+        function elementEditorHandler (event) {
             if (event.target.classList.contains('editable')) {
 
-                page.removeEventListener('click', elementEditor);
+                removeEventListenerFromCollection(editableElements);
 
                 const editingElement = event.target;
 
@@ -91,23 +115,23 @@
             }
         }
 
-        page.addEventListener('click', elementEditor);
+        addEventListenerToCollection(editableElements);
 
         applyButton.addEventListener('click', function ({ target }) {
             editingElement = target.closest('.editable');
             editingElement.textContent = textEditorArea.value;
-            page.addEventListener('click', elementEditor);
+            addEventListenerToCollection(editableElements);
         });
 
         cancelButton.addEventListener('click', function ({ target }) {
             editingElement = target.closest('.editable');
             editingElement.textContent = originalText;
-            page.addEventListener('click', elementEditor);
+            addEventListenerToCollection(editableElements);
         });
 
         clearButton.addEventListener('click', function () {
             textEditorArea.value = '';
-            page.addEventListener('click', elementEditor);
+            addEventListenerToCollection(editableElements);
         });
     </script>
 </body>
