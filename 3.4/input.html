@@ -78,7 +78,6 @@
 
         function addEventListenerToCollection (array) {
             const elementsArray = Array.from(array);
-            console.log(elementsArray);
 
             for (let i = 0; i < elementsArray.length; i++) {
                 elementsArray[i].addEventListener('click', elementEditorHandler)
@@ -99,10 +98,6 @@
                 removeEventListenerFromCollection(editableElements);
 
                 const editingElement = event.target;
-
-                if (!editingElement.classList.contains('editable')) {
-                    return;
-                }
 
                 originalText = editingElement.textContent;
                 textEditorArea.value = originalText;
