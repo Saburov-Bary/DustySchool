@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
-    <title>Инпутный клининг</title>
+    <title>Редактируй это</title>
     <style>
         .hidden {
             display: none;
@@ -60,17 +60,14 @@
         const textEditorArea = document.createElement('textarea');
         const applyButton = document.createElement('button');
         const cancelButton = document.createElement('button');
-        const clearButton = document.createElement('button');
 
         editorWrapper.classList.add('editor-wrapper');
         textEditorArea.classList.add('text-editor-area');
         applyButton.classList.add('apply-button');
         cancelButton.classList.add('cancel-button');
-        clearButton.classList.add('clear-button');
 
         applyButton.textContent = 'Apply';
         cancelButton.textContent = 'Cancel';
-        clearButton.textContent = 'Clear';
 
         const editableElements = document.querySelectorAll('.editable');
 
@@ -80,7 +77,7 @@
             const elementsArray = Array.from(array);
 
             for (let i = 0; i < elementsArray.length; i++) {
-                elementsArray[i].addEventListener('click', elementEditorHandler);
+                elementsArray[i].addEventListener('dblclick', elementEditorHandler);
             }
         }
 
@@ -88,7 +85,7 @@
             const elementsArray = Array.from(array);
 
             for (let i = 0; i < elementsArray.length; i++) {
-                elementsArray[i].removeEventListener('click', elementEditorHandler);
+                elementsArray[i].removeEventListener('dblclick', elementEditorHandler);
             }
         }
 
@@ -106,7 +103,6 @@
                 editorWrapper.appendChild(textEditorArea);
                 editorWrapper.appendChild(applyButton);
                 editorWrapper.appendChild(cancelButton);
-                editorWrapper.appendChild(clearButton);
             }
         }
 
@@ -121,11 +117,6 @@
         cancelButton.addEventListener('click', function ({ target }) {
             editingElement = target.closest('.editable');
             editingElement.textContent = originalText;
-            addEventListenerToCollection(editableElements);
-        });
-
-        clearButton.addEventListener('click', function () {
-            textEditorArea.value = '';
             addEventListenerToCollection(editableElements);
         });
     </script>
