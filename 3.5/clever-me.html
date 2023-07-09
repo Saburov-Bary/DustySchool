@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <title>Чатик с самым умным человеком</title>
+</head>
+<style>
+    .chat-window {
+        background-color: #f0f0f0;
+        border: 0.0625rem solid #ddd;
+        border-radius: 0.125rem;
+        display: flex;
+        flex-direction: column;
+        margin: 0.5rem;
+        box-sizing: border-box;
+        overflow: auto;
+        justify-content: flex-end;
+    }
+
+    .message {
+        width: fit-content;
+        background-color: #d2fbb9;
+        border: 0.3px solid #809772;
+        border-radius: 10px;
+        padding: 0 10px;
+    }
+
+    .input-message {
+        width: calc(100% - 92px);
+    }
+
+</style>
+<body>
+    <div class="chat-window">
+    </div>
+    <form class="form-input-message" action="submit">
+        <input class="input-message" type="text" autofocus>
+        <button class="message-send-button">Send</button>
+    </form>
+
+    <script>
+        const screenDimensions = [document.documentElement.clientWidth, document.documentElement.clientHeight];
+        const chatWindow = document.querySelector('.chat-window');
+        chatWindow.style.height = (screenDimensions[1] - 116) + 'px';
+
+        const messageSendButton = document.querySelector('.message-send-button');
+        const inputMessage = document.querySelector('.input-message');
+        const formInputMessage = document.querySelector('.form-input-message');
+
+        formInputMessage.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const message = document.createElement('p');
+            message.classList.add('message');
+            message.textContent = inputMessage.value;
+
+            inputMessage.value = '';
+
+            chatWindow.appendChild(message);
+        })
+    </script>
+</body>
+</html>
