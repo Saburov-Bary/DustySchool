@@ -8,7 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
     <title>Голодные клики</title>
 </head>
+    <style>
+        .hungry-pacman {
+            width: 90%;
+            height: 24px;
+            border: 0.5px solid #aeaeae;
+            border-radius: 12px;
+            padding: 0 12px;
+            margin: 0 auto;
+        }
 
+        .butcher-button {
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+        }
+    </style>
 <body class="page">
     <div>
         <p class="hungry-pacman"></p>
@@ -22,11 +37,12 @@
         const butcherButton = document.querySelector('.butcher-button');
 
         butcherButton.addEventListener('click', function ({ target }) {
-            let donorText = target.nextElementSibling.textContent;
             if (!target.nextElementSibling) {
                 return;
             }
 
+            let donorText = target.nextElementSibling.textContent;
+            
             if (donorText.length === 0) {
                 target.nextElementSibling.remove();
                 return;
