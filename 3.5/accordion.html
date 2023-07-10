@@ -114,9 +114,9 @@
         <div class="accordion-key-wrapper">
             <div class="accordion-key-container accordion-key-container-main">
                 <div class="accordion-key-header-wrapper">
-                    <div class="accordion-key-header-option">
+                    <p class="accordion-key-header-option">
                         Personal data
-                    </div>
+                    </p>
                     <div class="accordion-key-header-description">
                     </div>
                 </div>
@@ -132,10 +132,9 @@
         window.addEventListener("DOMContentLoaded", function () {
             const accordionWrapper = document.querySelector('.accordion-wrapper');
             const accordionKeyWrapper = accordionWrapper.querySelectorAll('.accordion-key-wrapper');
-            let expandedElemeent;
+            let previousTarget;
 
             function accordionSwitch(element) {
-                console.log(expandedElemeent);
                 const arrow = element.lastElementChild;
                 const parrentCurrentTarget = element.parentElement;
                 parrentCurrentTarget.lastElementChild.classList.toggle('hidden');
@@ -150,12 +149,14 @@
 
             for (const accordionKey of accordionKeyWrapper) {
                 accordionKey.firstElementChild.addEventListener('click', function ({ currentTarget }) {
-                    if (currentTarget !== expandedElemeent && expandedElemeent) {
-                        accordionSwitch(expandedElemeent);
+                    if (previousTarget && previousTarget !== currentTarget) {
+                        if (previousTarget.parentElement.classList.contains('expanded')) {
+                            accordionSwitch(previousTarget);
+                        }
                     }
 
-                    expandedElemeent = currentTarget;
                     accordionSwitch(currentTarget);
+                    previousTarget = currentTarget;
                 });
             }
         });
