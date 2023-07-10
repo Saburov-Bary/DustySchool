@@ -55,13 +55,17 @@
         .accordion-key-container-main {
             cursor: pointer;
         }
+
+        .border-header-main {
+            border-bottom: 1px solid #E7EBF0;
+        }
     </style>
 </head>
 
 <body>
     <div class="accordion-wrapper">
         <div class="accordion-key-wrapper">
-            <div class="accordion-key-container accordion-key-container-main">
+            <div class="accordion-key-container accordion-key-container-main border-header-main">
                 <div class="accordion-key-header-wrapper">
                     <p class="accordion-key-header-option">
                         General Settings
@@ -78,7 +82,7 @@
             </div>
         </div>
         <div class="accordion-key-wrapper">
-            <div class="accordion-key-container accordion-key-container-main">
+            <div class="accordion-key-container accordion-key-container-main border-header-main">
                 <div class="accordion-key-header-wrapper">
                     <p class="accordion-key-header-option">
                         Users
@@ -95,7 +99,7 @@
             </div>
         </div>
         <div class="accordion-key-wrapper">
-            <div class="accordion-key-container accordion-key-container-main">
+            <div class="accordion-key-container accordion-key-container-main border-header-main">
                 <div class="accordion-key-header-wrapper">
                     <p class="accordion-key-header-option">
                         Advanced settings
@@ -112,7 +116,7 @@
             </div>
         </div>
         <div class="accordion-key-wrapper">
-            <div class="accordion-key-container accordion-key-container-main">
+            <div class="accordion-key-container accordion-key-container-main border-header-main">
                 <div class="accordion-key-header-wrapper">
                     <p class="accordion-key-header-option">
                         Personal data
@@ -139,6 +143,7 @@
                 const parrentCurrentTarget = element.parentElement;
                 parrentCurrentTarget.lastElementChild.classList.toggle('hidden');
                 parrentCurrentTarget.classList.toggle('expanded');
+                element.classList.toggle('border-header-main');
 
                 if (arrow.classList.contains('fa-chevron-up')) {
                     arrow.classList.replace('fa-chevron-up', 'fa-chevron-down');
