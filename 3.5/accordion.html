@@ -139,9 +139,9 @@
             let previousTarget;
 
             function accordionSwitch(element) {
-                const arrow = element.lastElementChild;
-                const parrentCurrentTarget = element.parentElement;
-                parrentCurrentTarget.lastElementChild.classList.toggle('hidden');
+                const arrow = element.querySelector('.fa-solid');
+                const parrentCurrentTarget = element.closest('.accordion-key-wrapper');
+                parrentCurrentTarget.querySelector('.accordion-key-container-expanded').classList.toggle('hidden');
                 parrentCurrentTarget.classList.toggle('expanded');
                 element.classList.toggle('border-header-main');
 
@@ -153,9 +153,9 @@
             }
 
             for (const accordionKey of accordionKeyWrapper) {
-                accordionKey.firstElementChild.addEventListener('click', function ({ currentTarget }) {
+                accordionKey.querySelector('.accordion-key-container-main').addEventListener('click', function ({ currentTarget }) {
                     if (previousTarget && previousTarget !== currentTarget) {
-                        if (previousTarget.parentElement.classList.contains('expanded')) {
+                        if (previousTarget.closest('.accordion-key-wrapper').classList.contains('expanded')) {
                             accordionSwitch(previousTarget);
                         }
                     }

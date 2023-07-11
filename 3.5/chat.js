@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const restoreMessage = document.createElement('p');
         restoreMessage.classList.add('message');
         restoreMessage.textContent = value;
-        chat.firstElementChild.appendChild(restoreMessage);
+        chat.querySelector('.chat-window').appendChild(restoreMessage);
       }
 
       messageMemoryNumber = Object.keys(messageMemory).length - 1;
