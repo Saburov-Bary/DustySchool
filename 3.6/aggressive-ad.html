@@ -26,6 +26,25 @@
     <p> Мы надеемся, что наш магазин станет для вас надежным партнером в создании комфорта и уюта в вашей жизни. Спасибо
         за выбор нашего магазина и приятного вам шопинга!
     </p>
+
+    <script>
+        function copyright() {
+            let originText = window.getSelection();
+            let addedText = '<br><br>Источник: ' + document.location.href;
+            let copiedText = originText + addedText;
+            tempElement = document.createElement('div');
+            tempElement.style.position = 'absolute';
+            tempElement.style.left = '-99999px';
+            document.body.appendChild(tempElement);
+            tempElement.innerHTML = copiedText;
+            originText.selectAllChildren(tempElement);
+
+            window.setTimeout(function () {
+                document.body.removeChild(tempElement);
+            }, 100);
+        }
+        document.addEventListener('copy', copyright);
+    </script>
 </body>
 
 </html>
