@@ -54,3 +54,43 @@
 ### Кнопки
 * Сохранить
 * Отменить
+
+
+# Структура данных для хранения в LocalStorage
+
+## Данные форм будем хранить в виде объекта. Выглядит примерно так:
+```
+const passwordStorage = {
+    'google': {
+        'type': 'web-site',
+        'login': 'myLogin',
+        'password': 'myPassword1',
+        'link': 'link.google.com',
+        'createDate': DD.MM.YYYY,
+        'createTime': HH:MM:SS,
+    },
+
+    'alfabank': {
+        'type': 'card',
+        'cardBumber': 'myCardNumber',
+        'ExpDate': MM/YY,
+        'CVV': 123,
+        'owner': 'Name Surname',
+        'createDate': DD.MM.YYYY,
+        'createTime': HH:MM:SS,
+    },
+
+}
+```
+
+## Для записи в `LocalStorage` используем:
+```
+localStorage.setItem('passwordStorage', JSON.stringify(passwordStorage));
+```
+
+## Для чтения из `LocalStorage` используем:
+```
+JSON.parse(localStorage(passwordStorage))
+```
+
+:bangbang: в процессе разработки возможны изменения для удобства использования данными
